@@ -25,30 +25,55 @@ import {
   MessageSquare,
   Share2,
 } from "lucide-react";
-import { Inter } from "next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
 
 interface Slide {
   id: number;
   content: string;
-  image: string;
+  image?: string;
+  images?: string[];
+  video?: {
+    src: string;
+    link: string;
+  };
+  videos?: {
+    src: string;
+    link: string;
+  }[];
 }
 
 export function GoogleSlidesCloneComponent() {
   const slides = [
-    { id: 1, content: "v0", image: "" },
+    { id: 1, image: "/v0-logo.png" },
+    { id: 2, content: "Next.js Expert", image: "/nextjs-expert.png" },
     {
-      id: 2,
-      content: "Flappy Bird in v0",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KwvVaoXsgjdiVvO4YhM9ztQ5t0PGQO.png",
+      id: 3,
+      content: "Quick Prototyping",
+      image: "",
+      video: { src: "/v0-demo.mp4", link: "https://v0.dev/chat/b/SS0Vu4l" },
     },
-    { id: 3, content: "Title 1", image: "" },
-    { id: 4, content: "Title 2", image: "" },
-    { id: 5, content: "Title 3", image: "" },
-    { id: 6, content: "Title 4", image: "" },
-    { id: 7, content: "Title 5", image: "" },
+
+    {
+      id: 4,
+      content: "Complex Visualisations",
+      videos: [
+        { src: "/greta-cube.mp4", link: "https://gretagoestoconf.v0.build/" },
+        { src: "/rubiks-cube.mp4", link: "https://b_affrprp8xi6.v0.build/" },
+      ],
+    },
+    { id: 5, content: "Cloning Machine", image: "/landing-page.png" },
+    {
+      id: 6,
+      content: "Supports Libraries",
+      video: {
+        src: "/amex-card.mp4",
+        link: "https://amex-demo.v0.build/",
+      },
+    },
+    {
+      id: 7,
+      content: "Complex State Management",
+      images: ["/flappy-bird.png", "/tetris.png"],
+    },
   ] as Slide[];
   const [currentSlide, setCurrentSlide] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -139,7 +164,7 @@ export function GoogleSlidesCloneComponent() {
       <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-b border-gray-300">
         <div className="flex items-center space-x-4">
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/slides-logo-J8sxBBgGK6XXHELt6OntO7knJoefyP.webp"
+            src="/google-slides-logo.webp"
             alt="Google Slides Logo"
             width={24}
             height={24}
@@ -164,7 +189,7 @@ export function GoogleSlidesCloneComponent() {
             <Share2 className="h-4 w-4" />
           </Button>
           <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/profile-pic-I9V9FR5ycCLIZvwYa9ZXgJS6i8GdjD.jpg"
+            src="/profile-pic.webp"
             alt="Profile Picture"
             width={32}
             height={32}
@@ -259,21 +284,60 @@ export function GoogleSlidesCloneComponent() {
                 <div className="flex-1">
                   <div className="rounded-lg overflow-hidden shadow-sm relative">
                     <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-10%20at%2011.35.42@2x-N6PqmgM0pbxOJPoythxBg3RdQWKAQF.png"
+                      src="/slides-background.webp"
                       alt="Slide background"
                       width={160}
                       height={90}
                       className="w-full h-auto"
                     />
                     <div className="absolute inset-0 flex items-center justify-center flex-col p-2">
-                      <div className="text-white text-xs mb-2">
-                        {slide.content}
-                      </div>
+                      {slide.content && (
+                        <div className="text-white text-xs mb-2">
+                          {slide.content}
+                        </div>
+                      )}
                       {slide.image && (
                         <img
                           src={slide.image}
                           alt={slide.content}
-                          className="max-h-[50px]"
+                          className={
+                            slide.content ? "max-h-[50px]" : "max-h-[30px]"
+                          }
+                        />
+                      )}
+                      {slide.images && (
+                        <div className="flex space-x-4">
+                          {slide.images?.map((image, index) => (
+                            <img
+                              key={index}
+                              src={image}
+                              alt={slide.content}
+                              className="max-h-[50px]"
+                            />
+                          ))}
+                        </div>
+                      )}
+                      {slide.videos && (
+                        <div className="flex space-x-4">
+                          {slide.videos?.map((video, index) => (
+                            <video
+                              key={index}
+                              src={video.src}
+                              autoPlay
+                              loop
+                              muted
+                              className="max-h-[50px] rounded"
+                            />
+                          ))}
+                        </div>
+                      )}
+                      {slide.video && (
+                        <video
+                          src={slide.video.src}
+                          autoPlay
+                          loop
+                          muted
+                          className="max-h-[50px] rounded"
                         />
                       )}
                     </div>
@@ -294,14 +358,51 @@ export function GoogleSlidesCloneComponent() {
               objectFit="cover"
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
-              <div className="text-white text-4xl mb-6">
-                {slides[currentSlide - 1].content}
-              </div>
+              {slides[currentSlide - 1].content && (
+                <div className="text-white text-4xl mb-6">
+                  {slides[currentSlide - 1].content}
+                </div>
+              )}
               {slides[currentSlide - 1].image && (
                 <img
                   src={slides[currentSlide - 1].image}
                   alt={slides[currentSlide - 1].content}
                   className="max-h-[300px]"
+                />
+              )}
+              {slides[currentSlide - 1].images && (
+                <div className="flex space-x-4">
+                  {slides[currentSlide - 1].images?.map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={slides[currentSlide - 1].content}
+                      className="max-h-[300px]"
+                    />
+                  ))}
+                </div>
+              )}
+              {slides[currentSlide - 1].videos && (
+                <div className="flex space-x-4">
+                  {slides[currentSlide - 1].videos?.map((video, index) => (
+                    <video
+                      key={index}
+                      src={video.src}
+                      autoPlay
+                      loop
+                      muted
+                      className="max-h-[300px] rounded"
+                    />
+                  ))}
+                </div>
+              )}
+              {slides[currentSlide - 1].video && (
+                <video
+                  src={slides[currentSlide - 1].video?.src}
+                  autoPlay
+                  loop
+                  muted
+                  className="max-h-[300px] rounded"
                 />
               )}
             </div>
@@ -351,7 +452,7 @@ export function GoogleSlidesCloneComponent() {
       {isFullscreen && (
         <div
           ref={fullscreenRef}
-          className={`${inter.className} fixed inset-0 bg-black z-50 flex items-center justify-center cursor-none`}
+          className="fixed inset-0 bg-black z-50 flex items-center justify-center cursor-none"
           onClick={nextSlide}
         >
           <div className="relative w-screen h-screen">
@@ -362,14 +463,51 @@ export function GoogleSlidesCloneComponent() {
               objectFit="cover"
             />
             <div className="absolute inset-0  flex flex-col items-center justify-center p-8">
-              <div className="text-white text-6xl mb-10">
-                {slides[currentSlide - 1].content}
-              </div>
+              {slides[currentSlide - 1].content && (
+                <div className="text-white text-6xl mb-10">
+                  {slides[currentSlide - 1].content}
+                </div>
+              )}
               {slides[currentSlide - 1].image && (
                 <img
                   src={slides[currentSlide - 1].image}
                   alt={slides[currentSlide - 1].content}
                   className="max-h-[600px]"
+                />
+              )}
+              {slides[currentSlide - 1].images && (
+                <div className="flex space-x-4">
+                  {slides[currentSlide - 1].images?.map((image, index) => (
+                    <img
+                      key={index}
+                      src={image}
+                      alt={slides[currentSlide - 1].content}
+                      className="max-h-[600px]"
+                    />
+                  ))}
+                </div>
+              )}
+              {slides[currentSlide - 1].videos && (
+                <div className="flex space-x-4">
+                  {slides[currentSlide - 1].videos?.map((video, index) => (
+                    <video
+                      key={index}
+                      src={video.src}
+                      autoPlay
+                      loop
+                      muted
+                      className="max-h-[600px] rounded"
+                    />
+                  ))}
+                </div>
+              )}
+              {slides[currentSlide - 1].video && (
+                <video
+                  src={slides[currentSlide - 1].video?.src}
+                  autoPlay
+                  loop
+                  muted
+                  className="max-h-[600px] rounded"
                 />
               )}
             </div>
