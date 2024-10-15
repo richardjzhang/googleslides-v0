@@ -69,8 +69,9 @@ export function GoogleSlidesCloneComponent() {
         link: "https://amex-demo.v0.build/",
       },
     },
+    { id: 7, content: "Fast & Efficient changes", image: "/nextjs-expert.png" },
     {
-      id: 7,
+      id: 8,
       content: "Complex State Management",
       images: ["/flappy-bird.png", "/tetris.png"],
     },
