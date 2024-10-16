@@ -39,43 +39,90 @@ interface Slide {
     src: string;
     link: string;
   }[];
+  background: string;
 }
 
-export function GoogleSlidesCloneComponent() {
+export default function GoogleSlidesCloneComponent() {
   const slides = [
-    { id: 1, image: "/v0-logo.png" },
-    { id: 2, content: "Next.js Expert", image: "/nextjs-expert.png" },
+    { id: 1, background: "/slide-backgrounds/slide-1.png" },
+    {
+      id: 2,
+      background: "/slide-backgrounds/slide-2.png",
+    },
     {
       id: 3,
+      background: "/slide-backgrounds/slide-3.png",
+    },
+    {
+      id: 4,
+      image: "/v0-logo.png",
+      background: "/slide-backgrounds/slides-background.webp",
+    },
+    {
+      id: 5,
+      background: "/slide-backgrounds/slide-5.png",
+    },
+    {
+      id: 6,
+      content: "The era of personal software",
+      background: "/slide-backgrounds/slides-background.webp",
+    },
+    {
+      id: 7,
+      content: "Next.js Expert",
+      image: "/nextjs-expert.png",
+      background: "/slide-backgrounds/slides-background.webp",
+    },
+    {
+      id: 8,
       content: "Quick Prototyping",
       image: "",
       video: { src: "/v0-demo.mp4", link: "https://v0.dev/chat/b/SS0Vu4l" },
+      background: "/slide-backgrounds/slides-background.webp",
     },
-
     {
-      id: 4,
+      id: 9,
       content: "Complex Visualisations",
       videos: [
         { src: "/greta-cube.mp4", link: "https://gretagoestoconf.v0.build/" },
         { src: "/rubiks-cube.mp4", link: "https://b_affrprp8xi6.v0.build/" },
       ],
+      background: "/slide-backgrounds/slides-background.webp",
     },
-    { id: 5, content: "Cloning Machine", image: "/landing-page.png" },
     {
-      id: 6,
+      id: 10,
+      content: "Cloning Machine",
+      image: "/landing-page.png",
+      background: "/slide-backgrounds/slides-background.webp",
+    },
+    {
+      id: 11,
       content: "Supports Libraries",
       video: {
         src: "/amex-card.mp4",
         link: "https://amex-demo.v0.build/",
       },
+      background: "/slide-backgrounds/slides-background.webp",
     },
-    { id: 7, content: "Fast & Efficient changes", image: "/nextjs-expert.png" },
     {
-      id: 8,
+      id: 12,
+      content: "Fast & Efficient changes",
+      image: "/nextjs-expert.png",
+      background: "/slide-backgrounds/slides-background.webp",
+    },
+    {
+      id: 13,
+      content: "Personalised Software",
+      // https://vercel-logo-html.v0.build/
+    },
+    {
+      id: 14,
       content: "Complex State Management",
       images: ["/flappy-bird.png", "/tetris.png"],
+      background: "/slide-backgrounds/slides-background.webp",
     },
   ] as Slide[];
+
   const [currentSlide, setCurrentSlide] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [title, setTitle] = useState("v0 Examples");
@@ -285,7 +332,7 @@ export function GoogleSlidesCloneComponent() {
                 <div className="flex-1">
                   <div className="rounded-lg overflow-hidden shadow-sm relative">
                     <Image
-                      src="/slides-background.webp"
+                      src={slide.background}
                       alt="Slide background"
                       width={160}
                       height={90}
@@ -353,7 +400,7 @@ export function GoogleSlidesCloneComponent() {
         <div className="flex-1 bg-gray-200 p-8 flex items-center justify-center">
           <div className="w-[960px] h-[540px] shadow-lg relative overflow-hidden">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-10%20at%2011.35.42@2x-N6PqmgM0pbxOJPoythxBg3RdQWKAQF.png"
+              src={slides[currentSlide - 1].background}
               alt="Slide background"
               layout="fill"
               objectFit="cover"
@@ -458,7 +505,7 @@ export function GoogleSlidesCloneComponent() {
         >
           <div className="relative w-screen h-screen">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-10%20at%2011.35.42@2x-N6PqmgM0pbxOJPoythxBg3RdQWKAQF.png"
+              src={slides[currentSlide - 1].background}
               alt="Slide background"
               layout="fill"
               objectFit="cover"
