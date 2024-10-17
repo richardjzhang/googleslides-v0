@@ -64,24 +64,31 @@ export default function GoogleSlidesCloneComponent() {
     },
     {
       id: 6,
-      content: "The era of personal software",
-      background: "/slide-backgrounds/slides-background.webp",
+      background: "/slide-backgrounds/slide-6.png",
     },
     {
       id: 7,
+      background: "/slide-backgrounds/slide-7.png",
+    },
+    {
+      id: 8,
+      background: "/slide-backgrounds/slide-8.png",
+    },
+    {
+      id: 9,
       content: "Next.js Expert",
       image: "/nextjs-expert.png",
       background: "/slide-backgrounds/slides-background.webp",
     },
     {
-      id: 8,
+      id: 10,
       content: "Quick Prototyping",
       image: "",
       video: { src: "/v0-demo.mp4", link: "https://v0.dev/chat/b/SS0Vu4l" },
       background: "/slide-backgrounds/slides-background.webp",
     },
     {
-      id: 9,
+      id: 11,
       content: "Complex Visualisations",
       videos: [
         { src: "/greta-cube.mp4", link: "https://gretagoestoconf.v0.build/" },
@@ -90,13 +97,13 @@ export default function GoogleSlidesCloneComponent() {
       background: "/slide-backgrounds/slides-background.webp",
     },
     {
-      id: 10,
+      id: 12,
       content: "Cloning Machine",
       image: "/landing-page.png",
       background: "/slide-backgrounds/slides-background.webp",
     },
     {
-      id: 11,
+      id: 13,
       content: "Supports Libraries",
       video: {
         src: "/amex-card.mp4",
@@ -105,18 +112,18 @@ export default function GoogleSlidesCloneComponent() {
       background: "/slide-backgrounds/slides-background.webp",
     },
     {
-      id: 12,
+      id: 14,
       content: "Fast & Efficient changes",
       image: "/nextjs-expert.png",
       background: "/slide-backgrounds/slides-background.webp",
     },
     {
-      id: 13,
+      id: 15,
       content: "Personalised Software",
       // https://vercel-logo-html.v0.build/
     },
     {
-      id: 14,
+      id: 16,
       content: "Complex State Management",
       images: ["/flappy-bird.png", "/tetris.png"],
       background: "/slide-backgrounds/slides-background.webp",
