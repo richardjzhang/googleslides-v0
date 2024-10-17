@@ -416,6 +416,7 @@ export default function GoogleSlidesClone() {
                 "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2019.55.41@2x-JTVqIO645wBShYGTzEWJDeO6mqq6a5.png"
               }
               alt="Slide background"
+              layout="fill"
               objectFit="cover"
             />
             <div className="absolute inset-0 flex flex-col items-center justify-center">
