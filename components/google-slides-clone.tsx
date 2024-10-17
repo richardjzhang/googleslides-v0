@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -156,12 +157,14 @@ export default function GoogleSlidesClone({
       {/* Top Menu Bar */}
       <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-b border-gray-300">
         <div className="flex items-center space-x-4">
-          <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/slides-logo-J8sxBBgGK6XXHELt6OntO7knJoefyP.webp"
-            alt="Google Slides Logo"
-            width={24}
-            height={24}
-          />
+          <Link href="/">
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/slides-logo-J8sxBBgGK6XXHELt6OntO7knJoefyP.webp"
+              alt="Google Slides Logo"
+              width={24}
+              height={24}
+            />
+          </Link>
           <Input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
