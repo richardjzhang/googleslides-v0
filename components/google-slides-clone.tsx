@@ -315,16 +315,19 @@ export default function GoogleSlidesClone() {
                     />
                     <div className="absolute inset-0 flex items-center justify-center flex-col p-2">
                       {slide.content && (
-                        <div className="text-white text-xs mb-2 font-medium">
+                        <div className="text-white text-xs mb-1 font-medium">
                           {slide.content}
                         </div>
                       )}
                       {slide.image && (
-                        <img
-                          src={slide.image}
-                          alt={slide.content || ""}
-                          className="max-h-[50px]"
-                        />
+                        <div className="relative w-[50px] h-[50px] rounded-lg overflow-hidden shadow-lg">
+                          <Image
+                            src={slide.image || ""}
+                            alt={slide.content || ""}
+                            layout="fill"
+                            objectFit="contain"
+                          />
+                        </div>
                       )}
                     </div>
                   </div>
@@ -353,11 +356,14 @@ export default function GoogleSlidesClone() {
                 </div>
               )}
               {slides[currentSlide - 1].image && (
-                <img
-                  src={slides[currentSlide - 1].image || ""}
-                  alt={slides[currentSlide - 1].content || ""}
-                  className="max-h-[300px]"
-                />
+                <div className="relative w-[300px] h-[300px] rounded-lg overflow-hidden shadow-lg">
+                  <Image
+                    src={slides[currentSlide - 1].image || ""}
+                    alt={slides[currentSlide - 1].content || ""}
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </div>
               )}
             </div>
           </div>
@@ -426,11 +432,14 @@ export default function GoogleSlidesClone() {
                 </div>
               )}
               {slides[currentSlide - 1].image && (
-                <img
-                  src={slides[currentSlide - 1].image || ""}
-                  alt={slides[currentSlide - 1].content || ""}
-                  className="max-h-[600px]"
-                />
+                <div className="relative w-[550px] h-[550px] rounded-lg overflow-hidden shadow-lg">
+                  <Image
+                    src={slides[currentSlide - 1].image || ""}
+                    alt={slides[currentSlide - 1].content || ""}
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </div>
               )}
             </div>
           </div>
