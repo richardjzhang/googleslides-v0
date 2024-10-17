@@ -13,7 +13,9 @@ const config: Config = {
         sans: ["var(--font-inter)"],
       },
       fontWeight: {
-        normal: "700", // This sets the default font weight to bold
+        normal: "400", // This sets the default font weight to bold
+        medium: "500",
+        bold: "700",
       },
       colors: {
         background: "hsl(var(--background))",
@@ -64,7 +66,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
 };
 
 export default config;

@@ -28,111 +28,53 @@ import {
 
 interface Slide {
   id: number;
-  content: string;
+  content?: string;
   image?: string;
-  images?: string[];
-  video?: {
-    src: string;
-    link: string;
-  };
-  videos?: {
-    src: string;
-    link: string;
-  }[];
-  background: string;
+  background?: string;
 }
 
-export default function GoogleSlidesCloneComponent() {
+export default function GoogleSlidesClone() {
   const slides = [
-    { id: 1, background: "/slide-backgrounds/slide-1.png" },
+    {
+      id: 1,
+      background:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.08.02@2x-jOestswPlFUPiOn7Z7mcqTOnfSYmDe.png",
+    },
     {
       id: 2,
-      background: "/slide-backgrounds/slide-2.png",
+      content: "Everybody can cook",
+      image:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.09.51@2x-LwcOZut207FfrgDcFhRuwycWuyo7qI.png",
     },
     {
       id: 3,
-      background: "/slide-backgrounds/slide-3.png",
+      background:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.02.22@2x-UtYIOPjoyMTG3XU7FLpp7dPHrtwr1b.png",
     },
     {
       id: 4,
-      image: "/v0-logo.png",
-      background: "/slide-backgrounds/slides-background.webp",
+      background:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.03.15@2x-glPAtIn5dgsUfWA1GymR4C84Eu9rNc.png",
     },
     {
       id: 5,
-      background: "/slide-backgrounds/slide-5.png",
+      background:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.03.07@2x-2vwizjN9Rt6kcE2PrG74zvQfHyUtPZ.png",
     },
     {
       id: 6,
-      background: "/slide-backgrounds/slide-6.png",
+      background:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.02.38@2x-unUAfyEKNXVB0Zdmrg0F6ZVYyy0MEs.png",
     },
     {
       id: 7,
-      background: "/slide-backgrounds/slide-7.png",
-    },
-    {
-      id: 8,
-      background: "/slide-backgrounds/slide-8.png",
-    },
-    {
-      id: 9,
-      content: "Next.js Expert",
-      image: "/nextjs-expert.png",
-      background: "/slide-backgrounds/slides-background.webp",
-    },
-    {
-      id: 10,
-      content: "Quick Prototyping",
-      image: "",
-      video: { src: "/v0-demo.mp4", link: "https://v0.dev/chat/b/SS0Vu4l" },
-      background: "/slide-backgrounds/slides-background.webp",
-    },
-    {
-      id: 11,
-      content: "Complex Visualisations",
-      videos: [
-        { src: "/greta-cube.mp4", link: "https://gretagoestoconf.v0.build/" },
-        { src: "/rubiks-cube.mp4", link: "https://b_affrprp8xi6.v0.build/" },
-      ],
-      background: "/slide-backgrounds/slides-background.webp",
-    },
-    {
-      id: 12,
-      content: "Cloning Machine",
-      image: "/landing-page.png",
-      background: "/slide-backgrounds/slides-background.webp",
-    },
-    {
-      id: 13,
-      content: "Supports Libraries",
-      video: {
-        src: "/amex-card.mp4",
-        link: "https://amex-demo.v0.build/",
-      },
-      background: "/slide-backgrounds/slides-background.webp",
-    },
-    {
-      id: 14,
-      content: "Fast & Efficient changes",
-      image: "/nextjs-expert.png",
-      background: "/slide-backgrounds/slides-background.webp",
-    },
-    {
-      id: 15,
-      content: "Personalised Software",
-      // https://vercel-logo-html.v0.build/
-    },
-    {
-      id: 16,
-      content: "Complex State Management",
-      images: ["/flappy-bird.png", "/tetris.png"],
-      background: "/slide-backgrounds/slides-background.webp",
+      background:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.03.35@2x-spvf99c6vXrRX5IqW8N9J8gwWDzU5O.png",
     },
   ] as Slide[];
-
   const [currentSlide, setCurrentSlide] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [title, setTitle] = useState("v0 Examples");
+  const [title, setTitle] = useState("V0 Slides");
   const fullscreenRef = useRef<HTMLDivElement>(null);
   const slidePreviewRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
@@ -146,12 +88,35 @@ export default function GoogleSlidesCloneComponent() {
   };
 
   const startSlideshow = () => {
+    document.body.requestFullscreen().catch((err) => {
+      console.error(
+        `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+      );
+    });
     setIsFullscreen(true);
   };
 
   const endSlideshow = () => {
-    setIsFullscreen(false);
+    document
+      .exitFullscreen()
+      .then(() => setIsFullscreen(false))
+      .catch((err) => {
+        console.error(
+          `Error attempting to exit full-screen mode: ${err.message} (${err.name})`
+        );
+      });
   };
+
+  useEffect(() => {
+    const handleFullscreenChange = () => {
+      setIsFullscreen(!!document.fullscreenElement);
+    };
+
+    document.addEventListener("fullscreenchange", handleFullscreenChange);
+    return () => {
+      document.removeEventListener("fullscreenchange", handleFullscreenChange);
+    };
+  }, []);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -219,7 +184,7 @@ export default function GoogleSlidesCloneComponent() {
       <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-b border-gray-300">
         <div className="flex items-center space-x-4">
           <Image
-            src="/google-slides-logo.webp"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/slides-logo-J8sxBBgGK6XXHELt6OntO7knJoefyP.webp"
             alt="Google Slides Logo"
             width={24}
             height={24}
@@ -244,7 +209,7 @@ export default function GoogleSlidesCloneComponent() {
             <Share2 className="h-4 w-4" />
           </Button>
           <Image
-            src="/profile-pic.webp"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/profile-pic-I9V9FR5ycCLIZvwYa9ZXgJS6i8GdjD.jpg"
             alt="Profile Picture"
             width={32}
             height={32}
@@ -339,7 +304,10 @@ export default function GoogleSlidesCloneComponent() {
                 <div className="flex-1">
                   <div className="rounded-lg overflow-hidden shadow-sm relative">
                     <Image
-                      src={slide.background}
+                      src={
+                        slide.background ||
+                        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2019.55.41@2x-JTVqIO645wBShYGTzEWJDeO6mqq6a5.png"
+                      }
                       alt="Slide background"
                       width={160}
                       height={90}
@@ -347,52 +315,15 @@ export default function GoogleSlidesCloneComponent() {
                     />
                     <div className="absolute inset-0 flex items-center justify-center flex-col p-2">
                       {slide.content && (
-                        <div className="text-white text-xs mb-2">
+                        <div className="text-white text-xs mb-2 font-medium">
                           {slide.content}
                         </div>
                       )}
                       {slide.image && (
                         <img
                           src={slide.image}
-                          alt={slide.content}
-                          className={
-                            slide.content ? "max-h-[50px]" : "max-h-[30px]"
-                          }
-                        />
-                      )}
-                      {slide.images && (
-                        <div className="flex space-x-4">
-                          {slide.images?.map((image, index) => (
-                            <img
-                              key={index}
-                              src={image}
-                              alt={slide.content}
-                              className="max-h-[50px]"
-                            />
-                          ))}
-                        </div>
-                      )}
-                      {slide.videos && (
-                        <div className="flex space-x-4">
-                          {slide.videos?.map((video, index) => (
-                            <video
-                              key={index}
-                              src={video.src}
-                              autoPlay
-                              loop
-                              muted
-                              className="max-h-[50px] rounded"
-                            />
-                          ))}
-                        </div>
-                      )}
-                      {slide.video && (
-                        <video
-                          src={slide.video.src}
-                          autoPlay
-                          loop
-                          muted
-                          className="max-h-[50px] rounded"
+                          alt={slide.content || ""}
+                          className="max-h-[50px]"
                         />
                       )}
                     </div>
@@ -407,57 +338,25 @@ export default function GoogleSlidesCloneComponent() {
         <div className="flex-1 bg-gray-200 p-8 flex items-center justify-center">
           <div className="w-[960px] h-[540px] shadow-lg relative overflow-hidden">
             <Image
-              src={slides[currentSlide - 1].background}
+              src={
+                slides[currentSlide - 1].background ||
+                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2019.55.41@2x-JTVqIO645wBShYGTzEWJDeO6mqq6a5.png"
+              }
               alt="Slide background"
               layout="fill"
               objectFit="cover"
             />
             <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
               {slides[currentSlide - 1].content && (
-                <div className="text-white text-4xl mb-6">
+                <div className="text-white text-5xl mb-6 font-medium">
                   {slides[currentSlide - 1].content}
                 </div>
               )}
               {slides[currentSlide - 1].image && (
                 <img
-                  src={slides[currentSlide - 1].image}
-                  alt={slides[currentSlide - 1].content}
+                  src={slides[currentSlide - 1].image || ""}
+                  alt={slides[currentSlide - 1].content || ""}
                   className="max-h-[300px]"
-                />
-              )}
-              {slides[currentSlide - 1].images && (
-                <div className="flex space-x-4">
-                  {slides[currentSlide - 1].images?.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={slides[currentSlide - 1].content}
-                      className="max-h-[300px]"
-                    />
-                  ))}
-                </div>
-              )}
-              {slides[currentSlide - 1].videos && (
-                <div className="flex space-x-4">
-                  {slides[currentSlide - 1].videos?.map((video, index) => (
-                    <video
-                      key={index}
-                      src={video.src}
-                      autoPlay
-                      loop
-                      muted
-                      className="max-h-[300px] rounded"
-                    />
-                  ))}
-                </div>
-              )}
-              {slides[currentSlide - 1].video && (
-                <video
-                  src={slides[currentSlide - 1].video?.src}
-                  autoPlay
-                  loop
-                  muted
-                  className="max-h-[300px] rounded"
                 />
               )}
             </div>
@@ -512,57 +411,24 @@ export default function GoogleSlidesCloneComponent() {
         >
           <div className="relative w-screen h-screen">
             <Image
-              src={slides[currentSlide - 1].background}
+              src={
+                slides[currentSlide - 1].background ||
+                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2019.55.41@2x-JTVqIO645wBShYGTzEWJDeO6mqq6a5.png"
+              }
               alt="Slide background"
-              layout="fill"
               objectFit="cover"
             />
-            <div className="absolute inset-0  flex flex-col items-center justify-center p-8">
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
               {slides[currentSlide - 1].content && (
-                <div className="text-white text-6xl mb-10">
+                <div className="text-white text-7xl mb-12 font-medium">
                   {slides[currentSlide - 1].content}
                 </div>
               )}
               {slides[currentSlide - 1].image && (
                 <img
-                  src={slides[currentSlide - 1].image}
-                  alt={slides[currentSlide - 1].content}
+                  src={slides[currentSlide - 1].image || ""}
+                  alt={slides[currentSlide - 1].content || ""}
                   className="max-h-[600px]"
-                />
-              )}
-              {slides[currentSlide - 1].images && (
-                <div className="flex space-x-4">
-                  {slides[currentSlide - 1].images?.map((image, index) => (
-                    <img
-                      key={index}
-                      src={image}
-                      alt={slides[currentSlide - 1].content}
-                      className="max-h-[600px]"
-                    />
-                  ))}
-                </div>
-              )}
-              {slides[currentSlide - 1].videos && (
-                <div className="flex space-x-4">
-                  {slides[currentSlide - 1].videos?.map((video, index) => (
-                    <video
-                      key={index}
-                      src={video.src}
-                      autoPlay
-                      loop
-                      muted
-                      className="max-h-[600px] rounded"
-                    />
-                  ))}
-                </div>
-              )}
-              {slides[currentSlide - 1].video && (
-                <video
-                  src={slides[currentSlide - 1].video?.src}
-                  autoPlay
-                  loop
-                  muted
-                  className="max-h-[600px] rounded"
                 />
               )}
             </div>
