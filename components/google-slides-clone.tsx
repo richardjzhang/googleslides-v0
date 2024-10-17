@@ -38,47 +38,7 @@ interface Slide {
   };
 }
 
-export default function GoogleSlidesClone() {
-  const slides = [
-    {
-      id: 1,
-      onlyImage:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.10.31@2x-1Wqe9BeFG2Pr7WNzaPCo1HqaK8Yheg.png",
-    },
-    {
-      id: 2,
-      custom: {
-        content: "Everybody can cook",
-        image:
-          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.09.51@2x-LwcOZut207FfrgDcFhRuwycWuyo7qI.png",
-      },
-    },
-    {
-      id: 3,
-      onlyImage:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.12.21@2x-65BciFjZ0taVKaYraCpd1KinyfSLw3.png",
-    },
-    {
-      id: 4,
-      onlyImage:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.13.15@2x-TUk2pe8J5RpqUQVVY6by9JwCfsnNPU.png",
-    },
-    {
-      id: 5,
-      onlyImage:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.11.52@2x-da7M3Vd4y9TNa0Y3j4yvzC01JSLpDe.png",
-    },
-    {
-      id: 6,
-      onlyImage:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.16.16@2x-RBq9TOuzTyJ2cY5MBoo1JVIHz7yE8y.png",
-    },
-    {
-      id: 7,
-      onlyImage:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.15.33@2x-6D9BrX9BDW7qNhseFPBhwua9KXkrYY.png",
-    },
-  ] as Slide[];
+export default function GoogleSlidesClone({ slides }: { slides: Slide[] }) {
   const [currentSlide, setCurrentSlide] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [title, setTitle] = useState("V0 Slides");
@@ -344,13 +304,13 @@ export default function GoogleSlidesClone() {
                     </div>
                     <div className="absolute bottom-2 right-4 left-4 flex justify-between items-center">
                       <Image
-                        src="/next-conf-logo.png"
+                        src="/general/next-conf-logo.png"
                         alt="Next.js CONF 24"
                         width={25}
                         height={4}
                       />
                       <Image
-                        src="/nextjs-logo.png"
+                        src="/general/nextjs-logo.png"
                         alt="Vercel"
                         width={4}
                         height={5}
@@ -400,13 +360,13 @@ export default function GoogleSlidesClone() {
             </div>
             <div className="absolute bottom-6 right-12 left-12 flex justify-between items-center">
               <Image
-                src="/next-conf-logo.png"
+                src="/general/next-conf-logo.png"
                 alt="Next.js CONF 24"
                 width={100}
                 height={16}
               />
               <Image
-                src="/nextjs-logo.png"
+                src="/general/nextjs-logo.png"
                 alt="Vercel"
                 width={21}
                 height={25}
@@ -497,13 +457,13 @@ export default function GoogleSlidesClone() {
             </div>
             <div className="absolute bottom-8 right-24 left-24 flex justify-between items-center">
               <Image
-                src="/next-conf-logo.png"
+                src="/general/next-conf-logo.png"
                 alt="Next.js CONF 24"
                 width={175}
                 height={28}
               />
               <Image
-                src="/nextjs-logo.png"
+                src="/general/nextjs-logo.png"
                 alt="Vercel"
                 width={46}
                 height={55}
