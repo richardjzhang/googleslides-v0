@@ -25,51 +25,58 @@ import {
   MessageSquare,
   Share2,
 } from "lucide-react";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 interface Slide {
   id: number;
-  content?: string;
-  image?: string;
-  background?: string;
+  onlyImage?: string;
+  custom?: {
+    content?: string;
+    image?: string;
+  };
 }
 
 export default function GoogleSlidesClone() {
   const slides = [
     {
       id: 1,
-      background:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.08.02@2x-jOestswPlFUPiOn7Z7mcqTOnfSYmDe.png",
+      onlyImage:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.10.31@2x-1Wqe9BeFG2Pr7WNzaPCo1HqaK8Yheg.png",
     },
     {
       id: 2,
-      content: "Everybody can cook",
-      image:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.09.51@2x-LwcOZut207FfrgDcFhRuwycWuyo7qI.png",
+      custom: {
+        content: "Everybody can cook",
+        image:
+          "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.09.51@2x-LwcOZut207FfrgDcFhRuwycWuyo7qI.png",
+      },
     },
     {
       id: 3,
-      background:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.02.22@2x-UtYIOPjoyMTG3XU7FLpp7dPHrtwr1b.png",
+      onlyImage:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.12.21@2x-65BciFjZ0taVKaYraCpd1KinyfSLw3.png",
     },
     {
       id: 4,
-      background:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.03.15@2x-glPAtIn5dgsUfWA1GymR4C84Eu9rNc.png",
+      onlyImage:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.13.15@2x-TUk2pe8J5RpqUQVVY6by9JwCfsnNPU.png",
     },
     {
       id: 5,
-      background:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.03.07@2x-2vwizjN9Rt6kcE2PrG74zvQfHyUtPZ.png",
+      onlyImage:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.11.52@2x-da7M3Vd4y9TNa0Y3j4yvzC01JSLpDe.png",
     },
     {
       id: 6,
-      background:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.02.38@2x-unUAfyEKNXVB0Zdmrg0F6ZVYyy0MEs.png",
+      onlyImage:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.16.16@2x-RBq9TOuzTyJ2cY5MBoo1JVIHz7yE8y.png",
     },
     {
       id: 7,
-      background:
-        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2020.03.35@2x-spvf99c6vXrRX5IqW8N9J8gwWDzU5O.png",
+      onlyImage:
+        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2022.15.33@2x-6D9BrX9BDW7qNhseFPBhwua9KXkrYY.png",
     },
   ] as Slide[];
   const [currentSlide, setCurrentSlide] = useState<number>(1);
@@ -276,7 +283,7 @@ export default function GoogleSlidesClone() {
 
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
-        <div className="w-64 bg-gray-100 border-r border-gray-300 flex flex-col">
+        <div className="min-w-64 w-64 bg-gray-100 border-r border-gray-300 flex flex-col">
           <div className="p-4 flex justify-between items-center">
             <Button variant="ghost" size="icon">
               <Search className="h-4 w-4" />
@@ -293,7 +300,7 @@ export default function GoogleSlidesClone() {
                 ref={(el) => {
                   slidePreviewRefs.current[index] = el;
                 }}
-                className={`flex items-start p-4 m-2 cursor-pointer rounded-lg ${
+                className={`flex items-start p-4 m-4 cursor-pointer rounded-lg ${
                   currentSlide === slide.id ? "ring-2 ring-blue-500" : ""
                 }`}
                 onClick={() => setCurrentSlide(slide.id)}
@@ -301,34 +308,53 @@ export default function GoogleSlidesClone() {
                 <div className="text-xs font-medium text-gray-500 mr-3 mt-1">
                   {slide.id}
                 </div>
-                <div className="flex-1">
-                  <div className="rounded-lg overflow-hidden shadow-sm relative">
-                    <Image
-                      src={
-                        slide.background ||
-                        "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2019.55.41@2x-JTVqIO645wBShYGTzEWJDeO6mqq6a5.png"
-                      }
-                      alt="Slide background"
-                      width={160}
-                      height={90}
-                      className="w-full h-auto"
-                    />
+                <div className="flex-1 w-full h-[100px]">
+                  <div className="rounded-lg overflow-hidden shadow-sm relative h-full w-full">
+                    <div className="w-full h-full relative flex bg-black">
+                      {slide.onlyImage && (
+                        <Image
+                          src={slide.onlyImage || ""}
+                          alt="Slide image"
+                          layout="fill"
+                          objectFit="contain"
+                          className="max-w-[80%] my-auto mx-auto"
+                        />
+                      )}
+                    </div>
                     <div className="absolute inset-0 flex items-center justify-center flex-col p-2">
-                      {slide.content && (
-                        <div className="text-white text-xs mb-1 font-medium">
-                          {slide.content}
-                        </div>
+                      {slide.custom && (
+                        <>
+                          {slide.custom.content && (
+                            <div className="text-white text-xs mb-2 font-medium">
+                              {slide.custom.content}
+                            </div>
+                          )}
+                          {slide.custom.image && (
+                            <div className="relative w-[50px] h-[50px] rounded-lg overflow-hidden shadow-lg">
+                              <Image
+                                src={slide.custom.image}
+                                alt={slide.custom.content || ""}
+                                layout="fill"
+                                objectFit="contain"
+                              />
+                            </div>
+                          )}
+                        </>
                       )}
-                      {slide.image && (
-                        <div className="relative w-[50px] h-[50px] rounded-lg overflow-hidden shadow-lg">
-                          <Image
-                            src={slide.image || ""}
-                            alt={slide.content || ""}
-                            layout="fill"
-                            objectFit="contain"
-                          />
-                        </div>
-                      )}
+                    </div>
+                    <div className="absolute bottom-2 right-4 left-4 flex justify-between items-center">
+                      <Image
+                        src="/next-conf-logo.png"
+                        alt="Next.js CONF 24"
+                        width={25}
+                        height={4}
+                      />
+                      <Image
+                        src="/nextjs-logo.png"
+                        alt="Vercel"
+                        width={4}
+                        height={5}
+                      />
                     </div>
                   </div>
                 </div>
@@ -340,31 +366,51 @@ export default function GoogleSlidesClone() {
         {/* Main Content */}
         <div className="flex-1 bg-gray-200 p-8 flex items-center justify-center">
           <div className="w-[960px] h-[540px] shadow-lg relative overflow-hidden">
-            <Image
-              src={
-                slides[currentSlide - 1].background ||
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2019.55.41@2x-JTVqIO645wBShYGTzEWJDeO6mqq6a5.png"
-              }
-              alt="Slide background"
-              layout="fill"
-              objectFit="cover"
-            />
+            <div className="w-full h-full flex bg-black">
+              {slides[currentSlide - 1].onlyImage && (
+                <Image
+                  src={slides[currentSlide - 1].onlyImage || ""}
+                  alt="Slide image"
+                  layout="fill"
+                  objectFit="contain"
+                  className="max-w-[80%] my-auto mx-auto"
+                />
+              )}
+            </div>
             <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
-              {slides[currentSlide - 1].content && (
-                <div className="text-white text-5xl mb-6 font-medium">
-                  {slides[currentSlide - 1].content}
-                </div>
+              {slides[currentSlide - 1].custom && (
+                <>
+                  {slides[currentSlide - 1].custom?.content && (
+                    <div className="text-white text-5xl mb-6 font-medium">
+                      {slides[currentSlide - 1].custom?.content}
+                    </div>
+                  )}
+                  {slides[currentSlide - 1].custom?.image && (
+                    <div className="relative w-[300px] h-[300px] rounded-lg overflow-hidden shadow-lg">
+                      <Image
+                        src={slides[currentSlide - 1].custom?.image || ""}
+                        alt={slides[currentSlide - 1].custom?.content || ""}
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
+                  )}
+                </>
               )}
-              {slides[currentSlide - 1].image && (
-                <div className="relative w-[300px] h-[300px] rounded-lg overflow-hidden shadow-lg">
-                  <Image
-                    src={slides[currentSlide - 1].image || ""}
-                    alt={slides[currentSlide - 1].content || ""}
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-              )}
+            </div>
+            <div className="absolute bottom-6 right-12 left-12 flex justify-between items-center">
+              <Image
+                src="/next-conf-logo.png"
+                alt="Next.js CONF 24"
+                width={100}
+                height={16}
+              />
+              <Image
+                src="/nextjs-logo.png"
+                alt="Vercel"
+                width={21}
+                height={25}
+              />
             </div>
           </div>
         </div>
@@ -412,35 +458,56 @@ export default function GoogleSlidesClone() {
       {isFullscreen && (
         <div
           ref={fullscreenRef}
-          className="fixed inset-0 bg-black z-50 flex items-center justify-center cursor-none"
+          className={`${inter.className} fixed inset-0 bg-black z-50 flex items-center justify-center cursor-none`}
           onClick={nextSlide}
         >
-          <div className="relative w-screen h-screen">
-            <Image
-              src={
-                slides[currentSlide - 1].background ||
-                "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-17%20at%2019.55.41@2x-JTVqIO645wBShYGTzEWJDeO6mqq6a5.png"
-              }
-              alt="Slide background"
-              layout="fill"
-              objectFit="cover"
-            />
+          <div className="relative w-screen h-screen overflow-hidden">
+            <div className="w-full h-full flex bg-black">
+              {slides[currentSlide - 1].onlyImage && (
+                <Image
+                  src={slides[currentSlide - 1].onlyImage || ""}
+                  alt="Slide image"
+                  layout="fill"
+                  objectFit="contain"
+                  className="max-w-[80%] my-auto mx-auto"
+                  quality={100}
+                />
+              )}
+            </div>
             <div className="absolute inset-0 flex flex-col items-center justify-center">
-              {slides[currentSlide - 1].content && (
-                <div className="text-white text-7xl mb-12 font-medium">
-                  {slides[currentSlide - 1].content}
-                </div>
+              {slides[currentSlide - 1].custom && (
+                <>
+                  {slides[currentSlide - 1].custom?.content && (
+                    <div className="text-white text-7xl mb-12 font-medium">
+                      {slides[currentSlide - 1].custom?.content}
+                    </div>
+                  )}
+                  {slides[currentSlide - 1].custom?.image && (
+                    <div className="relative w-[550px] h-[550px] rounded-lg overflow-hidden shadow-lg">
+                      <Image
+                        src={slides[currentSlide - 1].custom?.image || ""}
+                        alt={slides[currentSlide - 1].custom?.content || ""}
+                        layout="fill"
+                        objectFit="contain"
+                      />
+                    </div>
+                  )}
+                </>
               )}
-              {slides[currentSlide - 1].image && (
-                <div className="relative w-[550px] h-[550px] rounded-lg overflow-hidden shadow-lg">
-                  <Image
-                    src={slides[currentSlide - 1].image || ""}
-                    alt={slides[currentSlide - 1].content || ""}
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </div>
-              )}
+            </div>
+            <div className="absolute bottom-8 right-24 left-24 flex justify-between items-center">
+              <Image
+                src="/next-conf-logo.png"
+                alt="Next.js CONF 24"
+                width={175}
+                height={28}
+              />
+              <Image
+                src="/nextjs-logo.png"
+                alt="Vercel"
+                width={46}
+                height={55}
+              />
             </div>
           </div>
         </div>
