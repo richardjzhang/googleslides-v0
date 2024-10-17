@@ -38,10 +38,16 @@ interface Slide {
   };
 }
 
-export default function GoogleSlidesClone({ slides }: { slides: Slide[] }) {
+export default function GoogleSlidesClone({
+  slides,
+  initialTitle,
+}: {
+  slides: Slide[];
+  initialTitle: string;
+}) {
   const [currentSlide, setCurrentSlide] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [title, setTitle] = useState("V0 Slides");
+  const [title, setTitle] = useState(initialTitle);
   const fullscreenRef = useRef<HTMLDivElement>(null);
   const slidePreviewRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
