@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "v0 Examples",
+  title: "Google Slides",
 };
 
 export default function RootLayout({

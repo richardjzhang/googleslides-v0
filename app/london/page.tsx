@@ -5,7 +5,7 @@ export default function GoogleSlidesClone() {
   return (
     <GoogleSlidesCloneComponent
       slides={genericSlides}
-      initialTitle="London V0 Slides"
+      initialTitle="London V0 Presentation"
     />
   );
 }
