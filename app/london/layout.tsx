@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 export const metadata: Metadata = {
-  title: "London V0 Presentation",
+  title: "Next.js Conf 24 : London",
 };
 
 export default function RootLayout({

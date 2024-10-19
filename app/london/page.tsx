@@ -5,7 +5,7 @@ export default function GoogleSlidesClone() {
   return (
     <GoogleSlidesCloneComponent
       slides={londonSlides}
-      initialTitle="London V0 Presentation"
+      initialTitle="Next.js Conf 24 : London"
     />
   );
 }
