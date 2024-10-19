@@ -1,10 +1,10 @@
 import GoogleSlidesCloneComponent from "@/components/google-slides-clone";
-import { genericSlides } from "@/app/constants/slides";
+import { londonSlides } from "@/app/constants/london-slides";
 
 export default function GoogleSlidesClone() {
   return (
     <GoogleSlidesCloneComponent
-      slides={genericSlides}
+      slides={londonSlides}
       initialTitle="London V0 Presentation"
     />
   );
