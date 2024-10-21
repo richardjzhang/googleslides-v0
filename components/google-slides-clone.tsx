@@ -36,6 +36,10 @@ interface Slide {
   custom?: {
     content?: string;
     image?: string;
+    videos?: {
+      src: string;
+      link: string;
+    }[];
   };
 }
 
@@ -294,7 +298,7 @@ export default function GoogleSlidesClone({
                           alt="Slide image"
                           layout="fill"
                           objectFit="contain"
-                          className="max-w-[80%] my-auto mx-auto"
+                          className="max-w-[80%] max-h-[75%] my-auto mx-auto"
                         />
                       )}
                     </div>
@@ -302,7 +306,7 @@ export default function GoogleSlidesClone({
                       {slide.custom && (
                         <>
                           {slide.custom.content && (
-                            <div className="text-white text-xs mb-2 font-medium">
+                            <div className="text-white text-xs mb-1 font-medium text-center">
                               {slide.custom.content}
                             </div>
                           )}
@@ -314,6 +318,20 @@ export default function GoogleSlidesClone({
                                 layout="fill"
                                 objectFit="contain"
                               />
+                            </div>
+                          )}
+                          {slide.custom.videos && (
+                            <div className="flex space-x-4">
+                              {slide.custom.videos?.map((video, index) => (
+                                <video
+                                  key={index}
+                                  src={video.src}
+                                  autoPlay
+                                  loop
+                                  muted
+                                  className="max-h-[50px] rounded"
+                                />
+                              ))}
                             </div>
                           )}
                         </>
@@ -358,7 +376,7 @@ export default function GoogleSlidesClone({
               {slides[currentSlide - 1].custom && (
                 <>
                   {slides[currentSlide - 1].custom?.content && (
-                    <div className="text-white text-5xl mb-6 font-medium">
+                    <div className="text-white text-5xl mb-12 font-medium">
                       {slides[currentSlide - 1].custom?.content}
                     </div>
                   )}
@@ -370,6 +388,22 @@ export default function GoogleSlidesClone({
                         layout="fill"
                         objectFit="contain"
                       />
+                    </div>
+                  )}
+                  {slides[currentSlide - 1].custom?.videos && (
+                    <div className="flex space-x-4">
+                      {slides[currentSlide - 1].custom?.videos?.map(
+                        (video, index) => (
+                          <video
+                            key={index}
+                            src={video.src}
+                            autoPlay
+                            loop
+                            muted
+                            className="max-h-[300px] rounded"
+                          />
+                        )
+                      )}
                     </div>
                   )}
                 </>
@@ -455,18 +489,34 @@ export default function GoogleSlidesClone({
               {slides[currentSlide - 1].custom && (
                 <>
                   {slides[currentSlide - 1].custom?.content && (
-                    <div className="text-white text-7xl mb-12 font-medium">
+                    <div className="text-white text-7xl mb-20 font-medium">
                       {slides[currentSlide - 1].custom?.content}
                     </div>
                   )}
                   {slides[currentSlide - 1].custom?.image && (
-                    <div className="relative w-[550px] h-[550px] rounded-lg overflow-hidden shadow-lg">
+                    <div className="relative w-[600px] h-[600px] rounded-lg overflow-hidden shadow-lg">
                       <Image
                         src={slides[currentSlide - 1].custom?.image || ""}
                         alt={slides[currentSlide - 1].custom?.content || ""}
                         layout="fill"
                         objectFit="contain"
                       />
+                    </div>
+                  )}
+                  {slides[currentSlide - 1].custom?.videos && (
+                    <div className="flex space-x-4">
+                      {slides[currentSlide - 1].custom?.videos?.map(
+                        (video, index) => (
+                          <video
+                            key={index}
+                            src={video.src}
+                            autoPlay
+                            loop
+                            muted
+                            className="max-h-[600px] rounded"
+                          />
+                        )
+                      )}
                     </div>
                   )}
                 </>
