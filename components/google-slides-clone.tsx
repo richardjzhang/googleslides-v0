@@ -94,29 +94,37 @@ export default function GoogleSlidesClone({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      const nextKeys = ["ArrowRight", "ArrowDown", "PageUp", " ", "Enter"];
+      const prevKeys = ["ArrowLeft", "ArrowUp", "PageDown"];
+      const endKeys = ["Escape"];
+      const nonFullscreenNextKeys = ["ArrowDown", "PageDown"];
+      const nonFullscreenPrevKeys = ["ArrowUp", "PageUp"];
+
       if (isFullscreen) {
-        if (e.key === "ArrowRight" || e.key === "Enter" || e.key === " ") {
+        if (nextKeys.includes(e.key)) {
           e.preventDefault();
           nextSlide();
-        } else if (e.key === "ArrowLeft") {
+        } else if (prevKeys.includes(e.key)) {
+          e.preventDefault();
           prevSlide();
-        } else if (e.key === "Escape") {
+        } else if (endKeys.includes(e.key) && isFullscreen) {
+          e.preventDefault();
           endSlideshow();
         }
       } else {
-        if (e.key === "ArrowUp") {
-          e.preventDefault();
-          prevSlide();
-        } else if (e.key === "ArrowDown") {
+        if (nonFullscreenNextKeys.includes(e.key)) {
           e.preventDefault();
           nextSlide();
+        } else if (nonFullscreenPrevKeys.includes(e.key)) {
+          e.preventDefault();
+          prevSlide();
         }
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isFullscreen]);
+  }, [isFullscreen, currentSlide, nextSlide, prevSlide]);
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -135,7 +143,7 @@ export default function GoogleSlidesClone({
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-  }, [isFullscreen]);
+  }, [isFullscreen, currentSlide, nextSlide]);
 
   useEffect(() => {
     const activeSlidePreview = slidePreviewRefs.current[currentSlide - 1];
