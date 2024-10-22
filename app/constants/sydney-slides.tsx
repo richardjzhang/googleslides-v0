@@ -7,13 +7,9 @@ export const sydneySlides = [
     id: 2,
     onlyImage: "/sydney-assets/presenter-intro.png",
   },
-  //   {
-  //     id: 3,
-  //     onlyImage: "/general/v0-logo.avif",
-  //   },
   {
     id: 3,
-    onlyImage: "/sydney-assets/personal-era-boxes.png",
+    onlyImage: "/sydney-assets/personal-era-boxes-2.png",
   },
   {
     id: 4,
@@ -21,18 +17,15 @@ export const sydneySlides = [
   },
   {
     id: 5,
-    onlyImage: "/sydney-assets/v0-details.png",
+    onlyImage: "/general/v0-logo.avif",
   },
+
   {
     id: 6,
-    onlyImage: "/sydney-assets/v0-details-2.png",
-  },
-  {
-    id: 7,
     onlyImage: "/sydney-assets/what-can-v0-do.png",
   },
   {
-    id: 8,
+    id: 7,
     custom: {
       content: "Great at Design",
       videos: [
@@ -44,7 +37,7 @@ export const sydneySlides = [
     },
   },
   {
-    id: 9,
+    id: 8,
     custom: {
       content: "Next.js Expert",
       videos: [
@@ -56,7 +49,7 @@ export const sydneySlides = [
     },
   },
   {
-    id: 10,
+    id: 9,
     custom: {
       content: "Not just for Developers",
       videos: [
@@ -68,7 +61,7 @@ export const sydneySlides = [
     },
   },
   {
-    id: 11,
+    id: 10,
     custom: {
       content: "Works with Libraries",
       videos: [
@@ -84,7 +77,7 @@ export const sydneySlides = [
     },
   },
   {
-    id: 12,
+    id: 11,
     custom: {
       content: "Complex Visualisations",
       videos: [
@@ -100,7 +93,7 @@ export const sydneySlides = [
     },
   },
   {
-    id: 13,
+    id: 12,
     custom: {
       content: "Great at managing State",
       videos: [
@@ -116,7 +109,15 @@ export const sydneySlides = [
     },
   },
   {
+    id: 13,
+    onlyImage: "/sydney-assets/v0-details.png",
+  },
+  {
     id: 14,
+    onlyImage: "/sydney-assets/v0-details-2.png",
+  },
+  {
+    id: 15,
     custom: { content: "Live Demo" },
   },
 ];
