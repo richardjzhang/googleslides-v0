@@ -1,3 +1,5 @@
+export const sydneySlidesTitle = "Next.js Conf 24 : Sydney";
+
 export const sydneySlides = [
   {
     id: 1,
