@@ -330,7 +330,7 @@ export default function GoogleSlidesClone({
             className="ml-6"
           >
             {showHeader ? (
-              <ChevronUp className="h-5 w-5" />
+              <ChevronUp className="ml-6 h-5 w-5" />
             ) : (
               <ChevronDown className="ml-6 h-5 w-5" />
             )}
