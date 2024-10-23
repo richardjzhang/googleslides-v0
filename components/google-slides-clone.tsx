@@ -467,7 +467,7 @@ export default function GoogleSlidesClone({
                             autoPlay
                             loop
                             muted
-                            className="h-[450px] rounded"
+                            className="h-[150px] lg:h-[250px] xl:h-[450px] rounded"
                           />
                         )
                       )}
