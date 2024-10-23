@@ -25,6 +25,9 @@ import {
   Clock,
   Video,
   Highlighter,
+  Star,
+  Share,
+  Cloud,
   Image as ImageIcon,
 } from "lucide-react";
 import { Inter } from "next/font/google";
@@ -183,9 +186,19 @@ export default function GoogleSlidesClone({
                 <Input
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="bg-transparent border-none focus:ring-0 text-2xl p-0 shadow-none font-medium"
-                  placeholder="V0 Next.js Conf Roadshow"
+                  className="font-semibold bg-transparent border-none focus:ring-0 text-2xl p-0 w-fit mr-2 shadow-none"
                 />
+                <div className="flex items-center space-x-1">
+                  <Button variant="ghost" size="icon" className="text-gray-600">
+                    <Star className="h-5 w-5" />
+                  </Button>
+                  <Button variant="ghost" size="icon" className="text-gray-600">
+                    <Share className="h-5 w-5" />
+                  </Button>
+                  <Button variant="ghost" size="icon" className="text-gray-600">
+                    <Cloud className="h-5 w-5" />
+                  </Button>
+                </div>
               </div>
               <div className="flex space-x-4 font-normal mt-1">
                 <span>File</span>
@@ -202,25 +215,25 @@ export default function GoogleSlidesClone({
             </div>
           </div>
           <div className="flex items-center space-x-4">
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="text-gray-600">
               <Clock className="h-6 w-6" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="text-gray-600">
               <MessageSquare className="h-6 w-6" />
             </Button>
-            <Button variant="ghost" size="icon">
+            <Button variant="ghost" size="icon" className="text-gray-600">
               <Video className="h-6 w-6" />
             </Button>
             <Button
               variant="outline"
-              className="bg-white text-md"
+              className="bg-white text-md rounded-full"
               size="lg"
               onClick={startSlideshow}
             >
               Slideshow
             </Button>
             <Button
-              className="bg-sky-200 text-black hover:bg-sky-300 text-md"
+              className="bg-sky-200 text-black hover:bg-sky-300 text-md rounded-full"
               size="lg"
             >
               Share
@@ -238,26 +251,26 @@ export default function GoogleSlidesClone({
 
       <div className="flex items-center justify-between px-4 py-2 bg-gray-50 border-b border-gray-300">
         <div className="flex items-center space-x-1">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Search className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Plus className="h-5 w-5" />
           </Button>
           <div className="w-1 h-6 border-l border-slate-300" />
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Undo className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Redo className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Printer className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Palette className="h-5 w-5" />
           </Button>
-          <select className="bg-transparent border-none text-sm w-20 flex">
+          <select className="bg-transparent border-none text-sm w-20 flex cursor-pointer">
             <option>Fit</option>
             <option>100%</option>
             <option>75%</option>
@@ -265,22 +278,22 @@ export default function GoogleSlidesClone({
             <option>25%</option>
           </select>
           <div className="w-1 h-6 border-l border-slate-300" />
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <MousePointer2 className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Type className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <ImageIcon className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Shapes className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Minus className="h-5 w-5" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Highlighter className="h-5 w-5" />
           </Button>
           <div className="w-1 h-6 border-l border-slate-300" />
@@ -301,7 +314,7 @@ export default function GoogleSlidesClone({
           </Button>
         </div>
         <div className="flex items-center">
-          <Button variant="ghost" size="lg">
+          <Button variant="ghost" size="lg" className="text-gray-600">
             <Video className="h-5 w-5 mr-3" />
             <div className="font-medium text-md">Rec</div>
           </Button>
@@ -479,10 +492,10 @@ export default function GoogleSlidesClone({
       {/* Bottom Bar */}
       <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-t border-gray-300">
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <MousePointer2 className="h-4 w-4" />
           </Button>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Hand className="h-4 w-4" />
           </Button>
         </div>
@@ -502,13 +515,13 @@ export default function GoogleSlidesClone({
           </Button>
         </div>
         <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Minus className="h-4 w-4" />
           </Button>
           <select className="bg-transparent border-none text-sm">
             <option>100%</option>
           </select>
-          <Button variant="ghost" size="icon">
+          <Button variant="ghost" size="icon" className="text-gray-600">
             <Plus className="h-4 w-4" />
           </Button>
         </div>
