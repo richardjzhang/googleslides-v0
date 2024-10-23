@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import Link from "next/link";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,22 +8,24 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import {
   ChevronLeft,
   ChevronRight,
+  ChevronUp,
+  ChevronDown,
   Plus,
   Minus,
   Hand,
   Type,
   Shapes,
-  LayoutGrid,
   Palette,
   Undo,
   Redo,
-  MoreVertical,
   Search,
   Printer,
-  ZoomIn,
   MousePointer2,
   MessageSquare,
-  Share2,
+  Clock,
+  Video,
+  Highlighter,
+  Image as ImageIcon,
 } from "lucide-react";
 import { Inter } from "next/font/google";
 
@@ -56,14 +57,15 @@ export default function GoogleSlidesClone({
   const fullscreenRef = useRef<HTMLDivElement>(null);
   const slidePreviewRefs = useRef<(HTMLDivElement | null)[]>([]);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const [showHeader, setShowHeader] = useState(true);
 
-  const nextSlide = () => {
+  const nextSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev < slides.length ? prev + 1 : prev));
-  };
+  }, [slides.length]);
 
-  const prevSlide = () => {
+  const prevSlide = useCallback(() => {
     setCurrentSlide((prev) => (prev > 1 ? prev - 1 : prev));
-  };
+  }, []);
 
   const startSlideshow = () => {
     document.body.requestFullscreen().catch((err) => {
@@ -167,97 +169,153 @@ export default function GoogleSlidesClone({
   return (
     <div className="flex flex-col h-screen bg-white text-gray-800">
       {/* Top Menu Bar */}
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-b border-gray-300">
-        <div className="flex items-center space-x-4">
-          <Link href="/">
+      {showHeader && (
+        <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-b border-gray-300">
+          <div className="flex items-center space-x-5">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/slides-logo-J8sxBBgGK6XXHELt6OntO7knJoefyP.webp"
-              alt="Google Slides Logo"
-              width={24}
-              height={24}
+              src="/general/google-slides-logo.png"
+              width={28}
+              height={40}
+              alt="Google Slides logo"
             />
-          </Link>
-          <Input
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="font-semibold bg-transparent border-none focus:ring-0"
-          />
+            <div>
+              <div className="flex items-center space-x-4">
+                <Input
+                  value={title}
+                  onChange={(e) => setTitle(e.target.value)}
+                  className="bg-transparent border-none focus:ring-0 text-2xl p-0 shadow-none font-medium"
+                  placeholder="V0 Next.js Conf Roadshow"
+                />
+              </div>
+              <div className="flex space-x-4 font-normal mt-1">
+                <span>File</span>
+                <span>Edit</span>
+                <span>View</span>
+                <span>Insert</span>
+                <span>Format</span>
+                <span>Slide</span>
+                <span>Arrange</span>
+                <span>Tools</span>
+                <span>Extensions</span>
+                <span>Help</span>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center space-x-4">
+            <Button variant="ghost" size="icon">
+              <Clock className="h-6 w-6" />
+            </Button>
+            <Button variant="ghost" size="icon">
+              <MessageSquare className="h-6 w-6" />
+            </Button>
+            <Button variant="ghost" size="icon">
+              <Video className="h-6 w-6" />
+            </Button>
+            <Button
+              variant="outline"
+              className="bg-white text-md"
+              size="lg"
+              onClick={startSlideshow}
+            >
+              Slideshow
+            </Button>
+            <Button
+              className="bg-sky-200 text-black hover:bg-sky-300 text-md"
+              size="lg"
+            >
+              Share
+            </Button>
+            <Image
+              src="/general/profile-pic.webp"
+              alt="Profile Picture"
+              width={40}
+              height={40}
+              className="rounded-full"
+            />
+          </div>
         </div>
-        <div className="flex space-x-4">
-          <span>File</span>
-          <span>Edit</span>
-          <span>View</span>
-          <span>Insert</span>
-          <span>Format</span>
-          <span>Tools</span>
-          <span>Help</span>
-        </div>
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="icon">
-            <Share2 className="h-4 w-4" />
-          </Button>
-          <Image
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/profile-pic-I9V9FR5ycCLIZvwYa9ZXgJS6i8GdjD.jpg"
-            alt="Profile Picture"
-            width={32}
-            height={32}
-            className="rounded-full"
-          />
-        </div>
-      </div>
+      )}
 
-      {/* Secondary Toolbar */}
       <div className="flex items-center justify-between px-4 py-2 bg-gray-50 border-b border-gray-300">
-        <div className="flex items-center space-x-2">
+        <div className="flex items-center space-x-1">
           <Button variant="ghost" size="icon">
-            <Undo className="h-4 w-4" />
+            <Search className="h-5 w-5" />
           </Button>
           <Button variant="ghost" size="icon">
-            <Redo className="h-4 w-4" />
+            <Plus className="h-5 w-5" />
+          </Button>
+          <div className="w-1 h-6 border-l border-slate-300" />
+          <Button variant="ghost" size="icon">
+            <Undo className="h-5 w-5" />
           </Button>
           <Button variant="ghost" size="icon">
-            <Printer className="h-4 w-4" />
+            <Redo className="h-5 w-5" />
           </Button>
           <Button variant="ghost" size="icon">
-            <ZoomIn className="h-4 w-4" />
+            <Printer className="h-5 w-5" />
           </Button>
-          <select className="bg-transparent border-none text-sm">
+          <Button variant="ghost" size="icon">
+            <Palette className="h-5 w-5" />
+          </Button>
+          <select className="bg-transparent border-none text-sm w-20 flex">
+            <option>Fit</option>
             <option>100%</option>
+            <option>75%</option>
+            <option>50%</option>
+            <option>25%</option>
           </select>
+          <div className="w-1 h-6 border-l border-slate-300" />
+          <Button variant="ghost" size="icon">
+            <MousePointer2 className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon">
+            <Type className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon">
+            <ImageIcon className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon">
+            <Shapes className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon">
+            <Minus className="h-5 w-5" />
+          </Button>
+          <Button variant="ghost" size="icon">
+            <Highlighter className="h-5 w-5" />
+          </Button>
+          <div className="w-1 h-6 border-l border-slate-300" />
+          <Button variant="ghost" size="sm" className="text-md">
+            Background
+          </Button>
+          <div className="w-1 h-6 border-l border-slate-300" />
+          <Button variant="ghost" size="sm" className="text-md">
+            Layout
+          </Button>
+          <div className="w-1 h-6 border-l border-slate-300" />
+          <Button variant="ghost" size="sm" className="text-md">
+            Theme
+          </Button>
+          <div className="w-1 h-6 border-l border-slate-300" />
+          <Button variant="ghost" size="sm" className="text-md">
+            Transition
+          </Button>
         </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="secondary" size="sm">
-            <Plus className="h-4 w-4 mr-2" />
-            Slide
-          </Button>
-          <Button variant="ghost" size="icon">
-            <LayoutGrid className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon">
-            <Palette className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon">
-            <Type className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon">
-            <Shapes className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon">
-            <MoreVertical className="h-4 w-4" />
-          </Button>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="sm">
-            <MessageSquare className="h-4 w-4 mr-2" />
-            Comment
+        <div className="flex items-center">
+          <Button variant="ghost" size="lg">
+            <Video className="h-5 w-5 mr-3" />
+            <div className="font-medium text-md">Rec</div>
           </Button>
           <Button
-            variant="outline"
-            size="sm"
-            onClick={startSlideshow}
-            className="bg-white text-black border border-gray-300 hover:bg-white hover:text-black"
+            variant="ghost"
+            size="icon"
+            onClick={() => setShowHeader((h) => !h)}
+            className="ml-6"
           >
-            Slideshow
+            {showHeader ? (
+              <ChevronUp className="h-5 w-5" />
+            ) : (
+              <ChevronDown className="ml-6 h-5 w-5" />
+            )}
           </Button>
         </div>
       </div>
@@ -265,15 +323,6 @@ export default function GoogleSlidesClone({
       <div className="flex flex-1 overflow-hidden">
         {/* Sidebar */}
         <div className="min-w-64 w-64 bg-gray-100 border-r border-gray-300 flex flex-col">
-          <div className="p-4 flex justify-between items-center">
-            <Button variant="ghost" size="icon">
-              <Search className="h-4 w-4" />
-            </Button>
-            <span className="text-sm font-medium">Slides</span>
-            <Button variant="ghost" size="icon">
-              <Plus className="h-4 w-4" />
-            </Button>
-          </div>
           <ScrollArea className="flex-1" ref={scrollAreaRef}>
             {slides.map((slide, index) => (
               <div

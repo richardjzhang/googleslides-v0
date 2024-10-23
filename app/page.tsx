@@ -22,13 +22,12 @@ export default function Home() {
           <Button variant="ghost" size="icon">
             <MenuIcon className="h-5 w-5" />
           </Button>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-3">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/google-slides-logo-4ZwCeJHKVIn4dlEwgvJMBtOyZcL0wO.webp"
-              width={32}
-              height={32}
+              src="/general/google-slides-logo.png"
+              width={24}
+              height={28}
               alt="Google Slides logo"
-              className="w-8 h-8"
             />
             <span className="text-xl font-semibold text-gray-700">Slides</span>
           </div>
