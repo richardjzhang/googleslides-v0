@@ -427,7 +427,7 @@ export default function GoogleSlidesClone({
 
         {/* Main Content */}
         <div className="flex-1 bg-gray-200 p-8 flex items-center justify-center">
-          <div className="w-[95%] aspect-video shadow-lg relative overflow-hidden">
+          <div className="w-[95%] max-h-[99%] aspect-video shadow-lg relative overflow-hidden">
             <div className="w-full h-full flex bg-black">
               {slides[currentSlide - 1].onlyImage && (
                 <Image
