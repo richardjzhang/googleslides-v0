@@ -441,12 +441,12 @@ export default function GoogleSlidesClone({
               {slides[currentSlide - 1].custom && (
                 <>
                   {slides[currentSlide - 1].custom?.content && (
-                    <div className="text-white text-5xl mb-12 font-medium">
+                    <div className="text-white text-lg md:text-4xl mb-6 xl:mb-12 font-medium xl:text-5xl text-center">
                       {slides[currentSlide - 1].custom?.content}
                     </div>
                   )}
                   {slides[currentSlide - 1].custom?.image && (
-                    <div className="relative w-[450px] h-[450px] rounded-lg overflow-hidden shadow-lg">
+                    <div className="relative h-[300px] w-[300px] xl:h-[400px] xl:w-[400px] rounded-lg overflow-hidden shadow-lg">
                       <Image
                         src={slides[currentSlide - 1].custom?.image || ""}
                         alt={slides[currentSlide - 1].custom?.content || ""}
