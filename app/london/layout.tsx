@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { londonSlidesTitle } from "@/app/constants/london-slides";
+
 export const metadata: Metadata = {
-  title: "Next.js Conf 24 : London",
+  title: londonSlidesTitle,
 };
 
 export default function RootLayout({

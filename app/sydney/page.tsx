@@ -1,11 +1,16 @@
 import GoogleSlidesCloneComponent from "@/components/google-slides-clone";
-import { genericSlides } from "@/app/constants/slides";
+import {
+  sydneySlides,
+  sydneySlidesTitle,
+  sydneyProfilePic,
+} from "@/app/constants/sydney-slides";
 
 export default function GoogleSlidesClone() {
   return (
     <GoogleSlidesCloneComponent
-      slides={genericSlides}
-      initialTitle="Sydney V0 Presentation"
+      slides={sydneySlides}
+      initialTitle={sydneySlidesTitle}
+      profilePic={sydneyProfilePic}
     />
   );
 }

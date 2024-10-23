@@ -1,5 +1,4 @@
 export const londonSlides = [
-  
   {
     id: 1,
     onlyImage: "/london-assets/london-01.png",
@@ -143,15 +142,9 @@ export const londonSlides = [
   {
     id: 36,
     onlyImage: "/london-assets/london-36.png",
-  },
-  
-  
-  
-  {
-    id: 2,
-    custom: {
-      content: "Now everybody can cook",
-      image: "/general/slide-2-image.png",
-    },
-  },
+  }
 ];
+
+export const londonProfilePic = "/london-assets/ben-seymour-profile-pic.jpeg";
+
+export const londonSlidesTitle = "Next.js Conf 24 : London";

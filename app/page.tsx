@@ -10,58 +10,35 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-const presentationTemplates = [
-  {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/presentation-image-1-7fzxiIut4ZE9h7D8EOSIBobNH9WPcT.png",
-    title: "Blank presentation",
-  },
-  {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/presentation-section-image-2-YWsQo0icQ4wgy0RcuCrIc7SM3a51Vw.png",
-    title: "Prototyping presentation",
-  },
-  {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/presentation-section-image-3-lPjX6TVQ8P9foRxf8K7gfT6GOz01Lm.png",
-    title: "Consulting proposal",
-  },
-  {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/presentation-section-image-4-QKqARFAy0pX01xpnSyVRU3xtK6tspR.png",
-    title: "Pitch",
-  },
-  {
-    image:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/presentation-image-5-KjkdhoxjTL9Ywn2Q4bKnYXTEECSpfI.png",
-    title: "Project Wireframes",
-  },
-];
+import { presentationTemplates } from "@/app/constants/presentation-templates";
+import { londonSlidesTitle } from "@/app/constants/london-slides";
+import { sydneySlidesTitle } from "@/app/constants/sydney-slides";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100">
-      <header className="flex items-center justify-between px-4 py-2 bg-white border-b">
+      <header className="flex items-center justify-between px-4 py-4 bg-white border-b">
         <div className="flex items-center space-x-4">
           <Button variant="ghost" size="icon">
             <MenuIcon className="h-5 w-5" />
           </Button>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-4">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/google-slides-logo-4ZwCeJHKVIn4dlEwgvJMBtOyZcL0wO.webp"
+              src="/general/google-slides-logo.png"
               width={32}
-              height={32}
+              height={44}
               alt="Google Slides logo"
-              className="w-8 h-8"
             />
-            <span className="text-xl font-semibold text-gray-700">Slides</span>
+            <span className="text-3xl font-medium text-gray-700">Slides</span>
           </div>
         </div>
         <div className="flex-1 max-w-2xl mx-4">
-          <div className="relative">
-            <Search className="absolute left-2 top-2.5 h-4 w-4 text-gray-400" />
-            <Input placeholder="Search" className="pl-8 bg-gray-100" />
+          <div className="flex items-center">
+            <Search className="h-4 w-4 text-gray-400 -mr-7 z-10" />
+            <Input
+              placeholder="Search"
+              className="pl-10 bg-gray-100 h-[48px] w-full rounded-full text-lg font-normal"
+            />
           </div>
         </div>
         <div className="flex items-center space-x-4">
@@ -130,8 +107,8 @@ export default function Home() {
           </div>
           <div className="space-y-1">
             {[
-              { title: "Sydney v0 Presentation", link: "/sydney" },
-              { title: "London v0 Presentation", link: "/london" },
+              { title: sydneySlidesTitle, link: "/sydney" },
+              { title: londonSlidesTitle, link: "/london" },
               { title: "San Francisco v0 Presentation", link: "/" },
               { title: "New York v0 Presentation", link: "/" },
               { title: "Next.js Conf presentation slides", link: "/" },
@@ -142,7 +119,7 @@ export default function Home() {
                 className="block hover:bg-gray-100 rounded-lg"
               >
                 <div className="flex items-center justify-between py-2 px-3">
-                  <div className="flex items-center space-x-3">
+                  <div className="flex items-center space-x-4">
                     <Image
                       src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/CleanShot%202024-10-18%20at%2000.24.43@2x-p1L8AyMiT0SfcEvTznrmdCcttAsYNB.png"
                       width={20}
@@ -150,9 +127,11 @@ export default function Home() {
                       alt="Slides icon"
                       className="w-5 h-5"
                     />
-                    <span>{presentation.title}</span>
+                    <span className="text-lg font-medium text-slate-800">
+                      {presentation.title}
+                    </span>
                   </div>
-                  <div className="flex items-center space-x-4 text-sm text-gray-500">
+                  <div className="flex items-center space-x-4 text-md text-gray-500">
                     <span>me</span>
                     <span>Oct 17, 2024</span>
                     <Button variant="ghost" size="icon">
