@@ -396,7 +396,7 @@ export default function GoogleSlidesClone({
                                   autoPlay
                                   loop
                                   muted
-                                  className="max-h-[50px] rounded"
+                                  className="h-[50px] rounded"
                                 />
                               ))}
                             </div>
@@ -467,7 +467,7 @@ export default function GoogleSlidesClone({
                             autoPlay
                             loop
                             muted
-                            className="max-h-[500px] rounded"
+                            className="h-[450px] rounded"
                           />
                         )
                       )}
@@ -580,7 +580,7 @@ export default function GoogleSlidesClone({
                             autoPlay
                             loop
                             muted
-                            className="max-h-[600px] rounded"
+                            className="h-[600px] rounded"
                           />
                         )
                       )}
