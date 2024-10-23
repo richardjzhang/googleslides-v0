@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -175,12 +176,14 @@ export default function GoogleSlidesClone({
       {showHeader && (
         <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-b border-gray-300">
           <div className="flex items-center space-x-5">
-            <Image
-              src="/general/google-slides-logo.png"
-              width={28}
-              height={40}
-              alt="Google Slides logo"
-            />
+            <Link href="/">
+              <Image
+                src="/general/google-slides-logo.png"
+                width={28}
+                height={40}
+                alt="Google Slides logo"
+              />
+            </Link>
             <div>
               <div className="flex items-center space-x-4">
                 <Input
@@ -422,7 +425,7 @@ export default function GoogleSlidesClone({
 
         {/* Main Content */}
         <div className="flex-1 bg-gray-200 p-8 flex items-center justify-center">
-          <div className="w-[960px] h-[540px] shadow-lg relative overflow-hidden">
+          <div className="w-[95%] aspect-video shadow-lg relative overflow-hidden">
             <div className="w-full h-full flex bg-black">
               {slides[currentSlide - 1].onlyImage && (
                 <Image
@@ -443,7 +446,7 @@ export default function GoogleSlidesClone({
                     </div>
                   )}
                   {slides[currentSlide - 1].custom?.image && (
-                    <div className="relative w-[300px] h-[300px] rounded-lg overflow-hidden shadow-lg">
+                    <div className="relative w-[450px] h-[450px] rounded-lg overflow-hidden shadow-lg">
                       <Image
                         src={slides[currentSlide - 1].custom?.image || ""}
                         alt={slides[currentSlide - 1].custom?.content || ""}
@@ -462,7 +465,7 @@ export default function GoogleSlidesClone({
                             autoPlay
                             loop
                             muted
-                            className="max-h-[300px] rounded"
+                            className="max-h-[500px] rounded"
                           />
                         )
                       )}
