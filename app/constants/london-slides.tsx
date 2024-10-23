@@ -20,4 +20,6 @@ export const londonSlides = [
   },
 ];
 
+export const londonProfilePic = "/london-assets/ben-seymour-profile-pic.jpeg";
+
 export const londonSlidesTitle = "Next.js Conf 24 : London";

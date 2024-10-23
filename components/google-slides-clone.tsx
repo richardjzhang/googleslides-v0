@@ -51,9 +51,11 @@ interface Slide {
 export default function GoogleSlidesClone({
   slides,
   initialTitle,
+  profilePic,
 }: {
   slides: Slide[];
   initialTitle: string;
+  profilePic: string;
 }) {
   const [currentSlide, setCurrentSlide] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -242,7 +244,7 @@ export default function GoogleSlidesClone({
               Share
             </Button>
             <Image
-              src="/general/profile-pic.webp"
+              src={profilePic}
               alt="Profile Picture"
               width={40}
               height={40}
