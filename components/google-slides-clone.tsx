@@ -189,7 +189,7 @@ export default function GoogleSlidesClone({
                 <Input
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="font-semibold bg-transparent border-none focus:ring-0 text-2xl p-0 w-fit mr-2 shadow-none"
+                  className="font-semibold bg-transparent border-none focus:ring-0 text-2xl p-0 pr-2 w-[300px] mr-2 shadow-none font-medium overflow-hidden whitespace-nowrap text-ellipsis"
                 />
                 <div className="flex items-center space-x-1">
                   <Button variant="ghost" size="icon" className="text-gray-600">
