@@ -1,4 +1,4 @@
-export const sydneySlidesTitle = "Next.js Conf 24 : Sydney";
+export const sydneySlidesTitle = "Next.js Conf Sydney V0";
 
 export const sydneyProfilePic = "/sydney-assets/profile-pic.webp";
 
