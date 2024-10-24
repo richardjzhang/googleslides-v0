@@ -60,6 +60,22 @@ export const sydneySlides = [
   {
     id: 9,
     custom: {
+      content: "Works with Libraries",
+      videos: [
+        {
+          src: "/sydney-assets/amex-card.mp4",
+          link: "https://amex-demo.v0.build/",
+        },
+        {
+          src: "/sydney-assets/bar-chart.mp4",
+          link: "https://v0.dev/chat/4NQBjy1NnHZ",
+        },
+      ],
+    },
+  },
+  {
+    id: 10,
+    custom: {
       content: "Not just for Developers",
       videos: [
         {
@@ -70,7 +86,7 @@ export const sydneySlides = [
     },
   },
   {
-    id: 10,
+    id: 11,
     custom: {
       content: "Great at managing State",
       videos: [
@@ -85,22 +101,7 @@ export const sydneySlides = [
       ],
     },
   },
-  {
-    id: 11,
-    custom: {
-      content: "Works with Libraries",
-      videos: [
-        {
-          src: "/sydney-assets/amex-card.mp4",
-          link: "https://amex-demo.v0.build/",
-        },
-        {
-          src: "/sydney-assets/bar-chart.mp4",
-          link: "https://v0.dev/chat/4NQBjy1NnHZ",
-        },
-      ],
-    },
-  },
+
   {
     id: 12,
     custom: {
