@@ -99,10 +99,10 @@ export const londonSlides = [
     id: 25,
     onlyImage: "/london-assets/london-25.png",
   },
-  {
-    id: 26,
-    onlyImage: "/london-assets/london-26.png",
-  },
+  // {
+  //   id: 26,
+  //   onlyImage: "/london-assets/london-26.png",
+  // },
   {
     id: 27,
     onlyImage: "/london-assets/london-27.png",
@@ -111,10 +111,10 @@ export const londonSlides = [
     id: 28,
     onlyImage: "/london-assets/london-28.png",
   },
-  {
-    id: 29,
-    onlyImage: "/london-assets/london-29.png",
-  },
+  // {
+  //   id: 29,
+  //   onlyImage: "/london-assets/london-29.png",
+  // },
   {
     id: 30,
     onlyImage: "/london-assets/london-30.png",
