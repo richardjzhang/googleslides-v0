@@ -11,6 +11,7 @@ export default function GoogleSlidesClone() {
       slides={londonSlides}
       initialTitle={londonSlidesTitle}
       profilePic={londonProfilePic}
+      fullScreenImageQuality={75}
     />
   );
 }
