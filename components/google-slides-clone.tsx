@@ -556,7 +556,7 @@ export default function GoogleSlidesClone({
                   layout="fill"
                   objectFit="contain"
                   className="max-w-[80%] my-auto mx-auto"
-                  quality={100}
+                  quality={75}
                 />
               )}
             </div>
