@@ -52,10 +52,12 @@ export default function GoogleSlidesClone({
   slides,
   initialTitle,
   profilePic,
+  fullScreenImageQuality,
 }: {
   slides: Slide[];
   initialTitle: string;
   profilePic: string;
+  fullScreenImageQuality: number;
 }) {
   const [currentSlide, setCurrentSlide] = useState<number>(1);
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -556,7 +558,7 @@ export default function GoogleSlidesClone({
                   layout="fill"
                   objectFit="contain"
                   className="max-w-[80%] my-auto mx-auto"
-                  quality={100}
+                  quality={fullScreenImageQuality}
                 />
               )}
             </div>
