@@ -426,116 +426,117 @@ export default function GoogleSlidesClone({
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 bg-gray-200 p-8 flex items-center justify-center">
-          <div className="w-[95%] max-h-[99%] aspect-video shadow-lg relative overflow-hidden">
-            <div className="w-full h-full flex bg-black">
-              {slides[currentSlide - 1].onlyImage && (
+        <div className="flex-1 bg-gray-200 flex flex-col">
+          <div className="p-8 flex items-center justify-center my-auto">
+            <div className="w-[95%] max-h-[99%] aspect-video shadow-lg relative overflow-hidden">
+              <div className="w-full h-full flex bg-black">
+                {slides[currentSlide - 1].onlyImage && (
+                  <Image
+                    src={slides[currentSlide - 1].onlyImage || ""}
+                    alt="Slide image"
+                    layout="fill"
+                    objectFit="contain"
+                    className="max-w-[80%] my-auto mx-auto"
+                  />
+                )}
+              </div>
+              <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
+                {slides[currentSlide - 1].custom && (
+                  <>
+                    {slides[currentSlide - 1].custom?.content && (
+                      <div className="text-white text-lg md:text-4xl mb-6 xl:mb-12 font-medium xl:text-5xl text-center">
+                        {slides[currentSlide - 1].custom?.content}
+                      </div>
+                    )}
+                    {slides[currentSlide - 1].custom?.image && (
+                      <div className="relative h-[300px] w-[300px] xl:h-[400px] xl:w-[400px] rounded-lg overflow-hidden shadow-lg">
+                        <Image
+                          src={slides[currentSlide - 1].custom?.image || ""}
+                          alt={slides[currentSlide - 1].custom?.content || ""}
+                          layout="fill"
+                          objectFit="contain"
+                        />
+                      </div>
+                    )}
+                    {slides[currentSlide - 1].custom?.videos && (
+                      <div className="flex space-x-4">
+                        {slides[currentSlide - 1].custom?.videos?.map(
+                          (video, index) => (
+                            <video
+                              key={index}
+                              src={video.src}
+                              autoPlay
+                              loop
+                              muted
+                              className="h-[150px] lg:h-[250px] xl:h-[450px] rounded"
+                            />
+                          )
+                        )}
+                      </div>
+                    )}
+                  </>
+                )}
+              </div>
+              <div className="absolute bottom-6 right-12 left-12 flex justify-between items-center">
                 <Image
-                  src={slides[currentSlide - 1].onlyImage || ""}
-                  alt="Slide image"
-                  layout="fill"
-                  objectFit="contain"
-                  className="max-w-[80%] my-auto mx-auto"
+                  src="/general/next-conf-logo.png"
+                  alt="Next.js CONF 24"
+                  width={100}
+                  height={16}
                 />
-              )}
-            </div>
-            <div className="absolute inset-0 flex flex-col justify-center items-center p-4">
-              {slides[currentSlide - 1].custom && (
-                <>
-                  {slides[currentSlide - 1].custom?.content && (
-                    <div className="text-white text-lg md:text-4xl mb-6 xl:mb-12 font-medium xl:text-5xl text-center">
-                      {slides[currentSlide - 1].custom?.content}
-                    </div>
-                  )}
-                  {slides[currentSlide - 1].custom?.image && (
-                    <div className="relative h-[300px] w-[300px] xl:h-[400px] xl:w-[400px] rounded-lg overflow-hidden shadow-lg">
-                      <Image
-                        src={slides[currentSlide - 1].custom?.image || ""}
-                        alt={slides[currentSlide - 1].custom?.content || ""}
-                        layout="fill"
-                        objectFit="contain"
-                      />
-                    </div>
-                  )}
-                  {slides[currentSlide - 1].custom?.videos && (
-                    <div className="flex space-x-4">
-                      {slides[currentSlide - 1].custom?.videos?.map(
-                        (video, index) => (
-                          <video
-                            key={index}
-                            src={video.src}
-                            autoPlay
-                            loop
-                            muted
-                            className="h-[150px] lg:h-[250px] xl:h-[450px] rounded"
-                          />
-                        )
-                      )}
-                    </div>
-                  )}
-                </>
-              )}
-            </div>
-            <div className="absolute bottom-6 right-12 left-12 flex justify-between items-center">
-              <Image
-                src="/general/next-conf-logo.png"
-                alt="Next.js CONF 24"
-                width={100}
-                height={16}
-              />
-              <Image
-                src="/general/nextjs-logo.png"
-                alt="Vercel"
-                width={21}
-                height={25}
-              />
+                <Image
+                  src="/general/nextjs-logo.png"
+                  alt="Vercel"
+                  width={21}
+                  height={25}
+                />
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          {/* Bottom Bar */}
+          <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-t border-gray-300">
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" size="icon" className="text-gray-600">
+                <MousePointer2 className="h-4 w-4" />
+              </Button>
+              <Button variant="ghost" size="icon" className="text-gray-600">
+                <Hand className="h-4 w-4" />
+              </Button>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" size="icon" onClick={prevSlide}>
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Input
+                type="text"
+                value={currentSlide}
+                onChange={(e) => setCurrentSlide(Number(e.target.value))}
+                className="w-10 text-center"
+                // Prevent backspace from removing the number
+                onKeyDown={(e) => {
+                  if (e.key === "Backspace") {
+                    e.preventDefault();
+                  }
+                }}
+              />
 
-      {/* Bottom Bar */}
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-100 border-t border-gray-300">
-        <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon" className="text-gray-600">
-            <MousePointer2 className="h-4 w-4" />
-          </Button>
-          <Button variant="ghost" size="icon" className="text-gray-600">
-            <Hand className="h-4 w-4" />
-          </Button>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon" onClick={prevSlide}>
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          <Input
-            type="text"
-            value={currentSlide}
-            onChange={(e) => setCurrentSlide(Number(e.target.value))}
-            className="w-10 text-center"
-            // Prevent backspace from removing the number
-            onKeyDown={(e) => {
-              if (e.key === "Backspace") {
-                e.preventDefault();
-              }
-            }}
-          />
-
-          <span className="text-sm"> / {slides.length}</span>
-          <Button variant="ghost" size="icon" onClick={nextSlide}>
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-        <div className="flex items-center space-x-2">
-          <Button variant="ghost" size="icon" className="text-gray-600">
-            <Minus className="h-4 w-4" />
-          </Button>
-          <select className="bg-transparent border-none text-sm">
-            <option>100%</option>
-          </select>
-          <Button variant="ghost" size="icon" className="text-gray-600">
-            <Plus className="h-4 w-4" />
-          </Button>
+              <span className="text-sm"> / {slides.length}</span>
+              <Button variant="ghost" size="icon" onClick={nextSlide}>
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Button variant="ghost" size="icon" className="text-gray-600">
+                <Minus className="h-4 w-4" />
+              </Button>
+              <select className="bg-transparent border-none text-sm">
+                <option>100%</option>
+              </select>
+              <Button variant="ghost" size="icon" className="text-gray-600">
+                <Plus className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
         </div>
       </div>
 
