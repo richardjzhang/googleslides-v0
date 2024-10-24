@@ -509,12 +509,19 @@ export default function GoogleSlidesClone({
             <ChevronLeft className="h-4 w-4" />
           </Button>
           <Input
-            type="number"
+            type="text"
             value={currentSlide}
             onChange={(e) => setCurrentSlide(Number(e.target.value))}
-            className="w-16 text-center"
+            className="w-10 text-center"
+            // Prevent backspace from removing the number
+            onKeyDown={(e) => {
+              if (e.key === "Backspace") {
+                e.preventDefault();
+              }
+            }}
           />
-          <span>/ {slides.length}</span>
+
+          <span className="text-sm"> / {slides.length}</span>
           <Button variant="ghost" size="icon" onClick={nextSlide}>
             <ChevronRight className="h-4 w-4" />
           </Button>
