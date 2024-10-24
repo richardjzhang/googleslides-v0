@@ -40,48 +40,9 @@ export const sydneySlides = [
       ],
     },
   },
+
   {
     id: 8,
-    custom: {
-      content: "Next.js Expert",
-      videos: [
-        {
-          src: "/sydney-assets/nextjs-expert.mp4",
-          link: "https://v0.dev/chat/E8fIPvg",
-        },
-      ],
-    },
-  },
-  {
-    id: 9,
-    custom: {
-      content: "Not just for Developers",
-      videos: [
-        {
-          src: "/sydney-assets/v0-demo.mp4",
-          link: "https://v0.dev/chat/b/SS0Vu4l",
-        },
-      ],
-    },
-  },
-  {
-    id: 10,
-    custom: {
-      content: "Works with Libraries",
-      videos: [
-        {
-          src: "/sydney-assets/amex-card.mp4",
-          link: "https://amex-demo.v0.build/",
-        },
-        {
-          src: "/sydney-assets/bar-chart.mp4",
-          link: "https://v0.dev/chat/4NQBjy1NnHZ",
-        },
-      ],
-    },
-  },
-  {
-    id: 11,
     custom: {
       content: "Complex Visualisations",
       videos: [
@@ -97,7 +58,35 @@ export const sydneySlides = [
     },
   },
   {
-    id: 12,
+    id: 9,
+    custom: {
+      content: "Works with Libraries",
+      videos: [
+        {
+          src: "/sydney-assets/amex-card.mp4",
+          link: "https://amex-demo.v0.build/",
+        },
+        {
+          src: "/sydney-assets/bar-chart.mp4",
+          link: "https://v0.dev/chat/4NQBjy1NnHZ",
+        },
+      ],
+    },
+  },
+  {
+    id: 10,
+    custom: {
+      content: "Not just for Developers",
+      videos: [
+        {
+          src: "/sydney-assets/v0-demo.mp4",
+          link: "https://v0.dev/chat/b/SS0Vu4l",
+        },
+      ],
+    },
+  },
+  {
+    id: 11,
     custom: {
       content: "Great at managing State",
       videos: [
@@ -112,16 +101,41 @@ export const sydneySlides = [
       ],
     },
   },
+
+  {
+    id: 12,
+    custom: {
+      content: "Frontend Expert",
+      videos: [
+        {
+          src: "/sydney-assets/nextjs-expert.mp4",
+          link: "https://v0.dev/chat/E8fIPvg",
+        },
+      ],
+    },
+  },
   {
     id: 13,
-    onlyImage: "/sydney-assets/v0-details.png",
+    onlyImage: "/sydney-assets/v0-details-1.png",
   },
   {
     id: 14,
-    onlyImage: "/sydney-assets/v0-details-2.png",
+    onlyImage: "/sydney-assets/v0-conversation.png",
   },
   {
     id: 15,
+    onlyImage: "/sydney-assets/v0-handshake-next.webp",
+  },
+  {
+    id: 16,
+    onlyImage: "/sydney-assets/v0-x-nextjs.webp",
+  },
+  {
+    id: 17,
+    onlyImage: "/sydney-assets/v0-details.png",
+  },
+  {
+    id: 18,
     custom: { content: "Live Demo" },
   },
 ];
