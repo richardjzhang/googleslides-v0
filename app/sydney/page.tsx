@@ -11,7 +11,7 @@ export default function GoogleSlidesClone() {
       slides={sydneySlides}
       initialTitle={sydneySlidesTitle}
       profilePic={sydneyProfilePic}
-      fullScreenImageQuality={100}
+      fullScreenImageQuality={80}
     />
   );
 }
