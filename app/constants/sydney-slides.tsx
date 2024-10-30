@@ -53,6 +53,7 @@ export const sydneySlides = [
         {
           src: "/sydney-assets/complex-animation.mp4",
           link: "https://v0.dev/chat/MkDP6LSVxDn",
+          // Source: https://x.com/search?q=a%3D(x%2Cy%2Cd%3D5*cos(mag(k%3Dx%2F8-25%2Ce%3Dy%2F8-25)%2F3))%3D%3E%5B(x%2Bd*k*sin(d*2.5-t)%2Bk%2F2*sin(y%2F3%2Bt))%2F2%2B100%2Cd*19%2B(d-2)*5*abs(cos(d%2F2-t%2F2))%2Bd*e%2B215%5D%20t%3D0%2Cdraw%3D%24%3D%3E%7Bt%7C%7CcreateCanvas(w%3D400%2Cw)%3Bbackground(6).stroke(255%2C66)%3Bfor(t%2B%3DPI%2F60%2Cy%3D100%3By%3C300%3By%2B%2B)for(x%3D100%3Bx%3C300%3Bx%2B%2B)point(...a(x%2Cy))%7D%20%23%E3%81%A4%E3%81%B6%E3%82%84%E3%81%8DProcessing&src=typed_query
         },
       ],
     },
