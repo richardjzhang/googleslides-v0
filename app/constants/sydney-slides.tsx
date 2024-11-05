@@ -6,27 +6,33 @@ export const sydneySlides = [
   {
     id: 1,
     onlyImage: "/general/generic-slide-1.png",
+    showBottomImages: true,
   },
   {
     id: 2,
     onlyImage: "/sydney-assets/presenter-intro.png",
+    showBottomImages: true,
   },
   {
     id: 3,
     onlyImage: "/sydney-assets/personal-era-boxes-2.png",
+    showBottomImages: true,
   },
   {
     id: 4,
     onlyImage: "/sydney-assets/prompt-engineering.png",
+    showBottomImages: true,
   },
   {
     id: 5,
     onlyImage: "/general/v0-logo.avif",
+    showBottomImages: true,
   },
 
   {
     id: 6,
     onlyImage: "/sydney-assets/what-can-v0-do.png",
+    showBottomImages: true,
   },
   {
     id: 7,
@@ -39,6 +45,7 @@ export const sydneySlides = [
         },
       ],
     },
+    showBottomImages: true,
   },
 
   {
@@ -57,6 +64,7 @@ export const sydneySlides = [
         },
       ],
     },
+    showBottomImages: true,
   },
   {
     id: 9,
@@ -73,6 +81,7 @@ export const sydneySlides = [
         },
       ],
     },
+    showBottomImages: true,
   },
   {
     id: 10,
@@ -85,6 +94,7 @@ export const sydneySlides = [
         },
       ],
     },
+    showBottomImages: true,
   },
   {
     id: 11,
@@ -101,6 +111,7 @@ export const sydneySlides = [
         },
       ],
     },
+    showBottomImages: true,
   },
 
   {
@@ -114,29 +125,36 @@ export const sydneySlides = [
         },
       ],
     },
+    showBottomImages: true,
   },
   {
     id: 13,
     onlyImage: "/sydney-assets/v0-details-1.png",
+    showBottomImages: true,
   },
   {
     id: 14,
     onlyImage: "/sydney-assets/v0-conversation.png",
+    showBottomImages: true,
   },
   {
     id: 15,
     onlyImage: "/sydney-assets/v0-handshake-next.webp",
+    showBottomImages: true,
   },
   {
     id: 16,
     onlyImage: "/sydney-assets/v0-x-nextjs.webp",
+    showBottomImages: true,
   },
   {
     id: 17,
     onlyImage: "/sydney-assets/v0-details.png",
+    showBottomImages: true,
   },
   {
     id: 18,
     custom: { content: "Live Demo" },
+    showBottomImages: true,
   },
 ];

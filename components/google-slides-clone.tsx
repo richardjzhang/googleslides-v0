@@ -46,6 +46,7 @@ interface Slide {
       link: string;
     }[];
   };
+  showBottomImages: boolean;
 }
 
 export default function GoogleSlidesClone({
@@ -108,8 +109,8 @@ export default function GoogleSlidesClone({
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      const nextKeys = ["ArrowRight", "ArrowDown", "PageUp", " ", "Enter"];
-      const prevKeys = ["ArrowLeft", "ArrowUp", "PageDown"];
+      const nextKeys = ["ArrowRight", "ArrowDown", "PageDown", " ", "Enter"];
+      const prevKeys = ["ArrowLeft", "ArrowUp", "PageUp"];
       const endKeys = ["Escape"];
       const nonFullscreenNextKeys = ["ArrowDown", "PageDown"];
       const nonFullscreenPrevKeys = ["ArrowUp", "PageUp"];
@@ -367,7 +368,11 @@ export default function GoogleSlidesClone({
                           alt="Slide image"
                           layout="fill"
                           objectFit="contain"
-                          className="max-w-[80%] max-h-[75%] my-auto mx-auto"
+                          className={`${
+                            slide.showBottomImages
+                              ? "max-w-[80%] my-auto mx-auto"
+                              : "w-full h-full"
+                          }`}
                         />
                       )}
                     </div>
@@ -406,20 +411,22 @@ export default function GoogleSlidesClone({
                         </>
                       )}
                     </div>
-                    <div className="absolute bottom-2 right-4 left-4 flex justify-between items-center">
-                      <Image
-                        src="/general/next-conf-logo.png"
-                        alt="Next.js CONF 24"
-                        width={25}
-                        height={4}
-                      />
-                      <Image
-                        src="/general/nextjs-logo.png"
-                        alt="Vercel"
-                        width={4}
-                        height={5}
-                      />
-                    </div>
+                    {slide.showBottomImages && (
+                      <div className="absolute bottom-2 right-4 left-4 flex justify-between items-center">
+                        <Image
+                          src="/general/next-conf-logo.png"
+                          alt="Next.js CONF 24"
+                          width={25}
+                          height={4}
+                        />
+                        <Image
+                          src="/general/nextjs-logo.png"
+                          alt="Vercel"
+                          width={4}
+                          height={5}
+                        />
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
@@ -430,7 +437,7 @@ export default function GoogleSlidesClone({
         {/* Main Content */}
         <div className="flex-1 bg-gray-200 flex flex-col">
           <div className="p-8 flex items-center justify-center my-auto">
-            <div className="w-[95%] max-h-[99%] aspect-video shadow-lg relative overflow-hidden">
+            <div className="w-[90%] max-h-[99%] aspect-video shadow-lg relative overflow-hidden">
               <div className="w-full h-full flex bg-black">
                 {slides[currentSlide - 1].onlyImage && (
                   <Image
@@ -438,7 +445,11 @@ export default function GoogleSlidesClone({
                     alt="Slide image"
                     layout="fill"
                     objectFit="contain"
-                    className="max-w-[80%] my-auto mx-auto"
+                    className={`${
+                      slides[currentSlide - 1].showBottomImages
+                        ? "max-w-[80%] my-auto mx-auto"
+                        : "w-full h-full"
+                    }`}
                   />
                 )}
               </div>
@@ -446,12 +457,12 @@ export default function GoogleSlidesClone({
                 {slides[currentSlide - 1].custom && (
                   <>
                     {slides[currentSlide - 1].custom?.content && (
-                      <div className="text-white text-lg md:text-4xl mb-6 xl:mb-12 font-medium xl:text-5xl text-center">
+                      <div className="text-white text-xl md:text-2xl lg:text-4xl mb-4 lg:mb-6 xl:mb-12 font-medium xl:text-5xl text-center">
                         {slides[currentSlide - 1].custom?.content}
                       </div>
                     )}
                     {slides[currentSlide - 1].custom?.image && (
-                      <div className="relative h-[300px] w-[300px] xl:h-[400px] xl:w-[400px] rounded-lg overflow-hidden shadow-lg">
+                      <div className="relative h-[150px] w-[150px] lg:h-[300px] lg:w-[300px] xl:h-[400px] xl:w-[400px] rounded-lg overflow-hidden shadow-lg">
                         <Image
                           src={slides[currentSlide - 1].custom?.image || ""}
                           alt={slides[currentSlide - 1].custom?.content || ""}
@@ -479,20 +490,22 @@ export default function GoogleSlidesClone({
                   </>
                 )}
               </div>
-              <div className="absolute bottom-6 right-12 left-12 flex justify-between items-center">
-                <Image
-                  src="/general/next-conf-logo.png"
-                  alt="Next.js CONF 24"
-                  width={100}
-                  height={16}
-                />
-                <Image
-                  src="/general/nextjs-logo.png"
-                  alt="Vercel"
-                  width={21}
-                  height={25}
-                />
-              </div>
+              {slides[currentSlide - 1].showBottomImages && (
+                <div className="absolute bottom-6 right-12 left-12 flex justify-between items-center">
+                  <Image
+                    src="/general/next-conf-logo.png"
+                    alt="Next.js CONF 24"
+                    width={100}
+                    height={16}
+                  />
+                  <Image
+                    src="/general/nextjs-logo.png"
+                    alt="Vercel"
+                    width={21}
+                    height={25}
+                  />
+                </div>
+              )}
             </div>
           </div>
           {/* Bottom Bar */}
@@ -557,7 +570,11 @@ export default function GoogleSlidesClone({
                   alt="Slide image"
                   layout="fill"
                   objectFit="contain"
-                  className="max-w-[80%] my-auto mx-auto"
+                  className={`${
+                    slides[currentSlide - 1].showBottomImages
+                      ? "max-w-[80%] my-auto mx-auto"
+                      : "w-full h-full"
+                  }`}
                   quality={fullScreenImageQuality}
                 />
               )}
@@ -599,20 +616,22 @@ export default function GoogleSlidesClone({
                 </>
               )}
             </div>
-            <div className="absolute bottom-8 right-24 left-24 flex justify-between items-center">
-              <Image
-                src="/general/next-conf-logo.png"
-                alt="Next.js CONF 24"
-                width={175}
-                height={28}
-              />
-              <Image
-                src="/general/nextjs-logo.png"
-                alt="Vercel"
-                width={46}
-                height={55}
-              />
-            </div>
+            {slides[currentSlide - 1].showBottomImages && (
+              <div className="absolute bottom-8 right-24 left-24 flex justify-between items-center">
+                <Image
+                  src="/general/next-conf-logo.png"
+                  alt="Next.js CONF 24"
+                  width={175}
+                  height={28}
+                />
+                <Image
+                  src="/general/nextjs-logo.png"
+                  alt="Vercel"
+                  width={46}
+                  height={55}
+                />
+              </div>
+            )}
           </div>
         </div>
       )}
