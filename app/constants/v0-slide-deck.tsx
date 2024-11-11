@@ -109,26 +109,6 @@ export const v0Slides = [
   },
   {
     id: 9,
-    onlyImage: "/sydney-assets/v0-details-1.png",
-    showBottomImages: true,
-  },
-  {
-    id: 10,
-    onlyImage: "/sydney-assets/v0-conversation.png",
-    showBottomImages: true,
-  },
-  {
-    id: 11,
-    onlyImage: "/sydney-assets/v0-handshake-next.webp",
-    showBottomImages: true,
-  },
-  {
-    id: 12,
-    onlyImage: "/sydney-assets/v0-x-nextjs.webp",
-    showBottomImages: true,
-  },
-  {
-    id: 13,
     onlyImage: "/sydney-assets/v0-details.png",
     showBottomImages: true,
   },
