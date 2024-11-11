@@ -194,7 +194,7 @@ export default function GoogleSlidesClone({
                 <Input
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
-                  className="font-semibold bg-transparent border-none focus:ring-0 text-xl p-0 pr-2 w-[250px] mr-2 shadow-none font-medium overflow-hidden whitespace-nowrap text-ellipsis"
+                  className="font-semibold bg-transparent border-none focus:ring-0 text-xl p-0 pr-2 w-[150px] mr-2 shadow-none font-medium overflow-hidden whitespace-nowrap text-ellipsis"
                 />
                 <div className="flex items-center space-x-1">
                   <Button variant="ghost" size="icon" className="text-gray-600">
@@ -481,7 +481,7 @@ export default function GoogleSlidesClone({
                               autoPlay
                               loop
                               muted
-                              className="h-[150px] lg:h-[250px] xl:h-[450px] rounded"
+                              className="h-[150px] lg:h-[250px] xl:h-[350px] rounded"
                             />
                           )
                         )}
@@ -607,7 +607,7 @@ export default function GoogleSlidesClone({
                             autoPlay
                             loop
                             muted
-                            className="h-[600px] rounded"
+                            className="h-[500px] rounded"
                           />
                         )
                       )}
