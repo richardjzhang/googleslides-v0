@@ -14,6 +14,7 @@ import { presentationTemplates } from "@/app/constants/presentation-templates";
 import { londonSlidesTitle } from "@/app/constants/london-slides";
 import { sydneySlidesTitle } from "@/app/constants/sydney-slides";
 import { londonV0SummitSlidesTitle } from "@/app/constants/london-v0-summit";
+import { v0SlidesTitle } from "@/app/constants/v0-slide-deck";
 
 export default function Home() {
   return (
@@ -110,6 +111,7 @@ export default function Home() {
             {[
               { title: sydneySlidesTitle, link: "/sydney" },
               { title: londonSlidesTitle, link: "/london" },
+              { title: v0SlidesTitle, link: "/v0-slide-deck" },
               { title: londonV0SummitSlidesTitle, link: "/london-v0-summit" },
               { title: "New York v0 Presentation", link: "/" },
               { title: "Next.js Conf presentation slides", link: "/" },
